@@ -10,8 +10,6 @@ export default function Home() {
 
         <main>
           <Hero />
-          {/* Add some space for testing scroll */}
-          <div className="h-[200vh] bg-white" />
         </main>
       </div>
     </SmoothScroll>

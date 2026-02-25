@@ -66,25 +66,28 @@ const Hero = () => {
 
                 {/* Row 2: ELEVATION + Star */}
                 <div className="relative w-full flex justify-start mt-0">
-                    <motion.div
-                        initial={{ x: "-100%", opacity: 0 }}
-                        animate={{ x: 0, opacity: 1 }}
-                        transition={{ duration: 1, delay: 0.4, ease: ease }}
-                        className="relative inline-block"
-                    >
-                        <h1 className="font-anton text-[110px] sm:text-[180px] md:text-[260px] lg:text-[320px] leading-[0.9] text-black uppercase tracking-[-0.01em] whitespace-nowrap">
+                    <div className="relative inline-block">
+                        <motion.h1
+                            initial={{ x: "-100%", opacity: 0 }}
+                            animate={{ x: 0, opacity: 1 }}
+                            transition={{ duration: 1, delay: 0.4, ease: ease }}
+                            className="font-anton text-[110px] sm:text-[180px] md:text-[260px] lg:text-[320px] leading-[0.9] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
+                        >
                             ELEVATION
-                        </h1>
+                        </motion.h1>
 
                         {/* Star rotating after entry */}
                         <motion.div
-                            initial={{ rotate: 0 }}
-                            animate={{ rotate: 360 }}
+                            initial={{ opacity: 0, rotate: 0 }}
+                            animate={{ opacity: 1, rotate: 360 }}
                             transition={{
-                                duration: 8,
-                                repeat: Infinity,
-                                ease: "linear",
-                                delay: 1.4 // Wait for slide to finish
+                                opacity: { duration: 0.8, delay: 1.1 },
+                                rotate: {
+                                    duration: 8,
+                                    repeat: Infinity,
+                                    ease: "linear",
+                                    delay: 1.1
+                                }
                             }}
                             className="absolute top-0 right-[-15%] md:right-[-25%] lg:right-[-18%] -translate-y-[65%] pointer-events-none"
                         >
@@ -97,7 +100,7 @@ const Hero = () => {
                                 />
                             </div>
                         </motion.div>
-                    </motion.div>
+                    </div>
                 </div>
 
                 {/* Row 3: STUDIO + Description */}
