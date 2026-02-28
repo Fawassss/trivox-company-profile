@@ -63,36 +63,37 @@ const marqueeItems = [
 
 const Marquee = () => {
     return (
-        <div className="bg-[#010101] py-[24px] overflow-hidden flex items-center h-[122px]">
+        <div className="bg-[#010101] py-[24px] overflow-hidden flex items-center h-[122px] w-full">
             <motion.div
-                className="flex whitespace-nowrap items-center gap-[40px]"
-                animate={{ x: ["0%", "-50%"] }}
+                className="flex whitespace-nowrap items-center shrink-0"
+                animate={{ x: [0, "-50%"] }}
                 transition={{
                     repeat: Infinity,
-                    duration: 30,
+                    duration: 20,
                     ease: "linear"
                 }}
             >
-                <div className="flex items-center gap-[40px]">
-                    {[...Array(2)].map((_, i) => (
-                        <div key={i} className="flex items-center gap-[40px]">
-                            {marqueeItems.map((text, idx) => (
-                                <div key={idx} className="flex items-center gap-[40px]">
-                                    <span className="font-anton text-[40px] lg:text-[64px] font-normal text-white leading-none">
-                                        {text}
-                                    </span>
+                {/* Properly duplicated set for infinite loop */}
+                {[...Array(4)].map((_, i) => (
+                    <div key={i} className="flex items-center shrink-0">
+                        {marqueeItems.map((text, idx) => (
+                            <div key={idx} className="flex items-center shrink-0">
+                                <span className="font-anton text-[40px] lg:text-[64px] font-normal text-white uppercase leading-none px-[30px] lg:px-[40px]">
+                                    {text}
+                                </span>
+                                <div className="flex items-center justify-center shrink-0">
                                     <Image
                                         src="/images/star.svg"
                                         alt="star"
                                         width={64}
                                         height={64}
-                                        className="w-[40px] h-[40px] lg:w-[64px] lg:h-[64px]"
+                                        className="w-[40px] h-[40px] lg:w-[64px] lg:h-[64px] block translate-y-[-2px] lg:translate-y-[-4px]"
                                     />
                                 </div>
-                            ))}
-                        </div>
-                    ))}
-                </div>
+                            </div>
+                        ))}
+                    </div>
+                ))}
             </motion.div>
         </div>
     );
