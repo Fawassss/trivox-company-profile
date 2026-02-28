@@ -1,6 +1,7 @@
 import Navbar from "@/components/ui/Navbar";
 import SmoothScroll from "@/components/providers/SmoothSctoll";
 import Hero from "@/components/section/home/hero/page";
+import AboutUs from "@/components/section/home/about-us/page";
 
 export default function Home() {
   return (
@@ -10,6 +11,7 @@ export default function Home() {
 
         <main>
           <Hero />
+          <AboutUs />
         </main>
       </div>
     </SmoothScroll>

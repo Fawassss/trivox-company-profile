@@ -122,7 +122,7 @@ const Hero = () => {
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
-                        className="order-1 lg:order-2 max-w-[450px] lg:max-w-[550px] lg:mb-12 xl:mb-16"
+                        className="order-1 lg:order-2 max-w-[450px] lg:max-w-[500px] lg:mb-12 xl:mb-16"
                     >
                         <div className="flex flex-wrap items-start justify-start gap-x-[0.35em] gap-y-0 text-left">
                             {words.map((word, idx) => (
