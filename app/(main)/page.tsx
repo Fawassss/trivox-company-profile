@@ -4,6 +4,7 @@ import Hero from "@/components/section/home/hero/page";
 import AboutUs from "@/components/section/home/about-us/page";
 import Services from "@/components/section/home/service/page";
 import Work from "@/components/section/home/work/page";
+import Feedback from "@/components/section/home/feedback/page";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
           <AboutUs />
           <Work />
           <Services />
+          <Feedback />
         </main>
       </div>
     </SmoothScroll>
