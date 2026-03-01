@@ -1,5 +1,5 @@
 import Navbar from "@/components/ui/Navbar";
-import SmoothScroll from "@/components/providers/SmoothSctoll";
+import SmoothScroll from "@/components/providers/SmoothScroll";
 import Hero from "@/components/section/home/hero/page";
 import AboutUs from "@/components/section/home/about-us/page";
 import Services from "@/components/section/home/service/page";

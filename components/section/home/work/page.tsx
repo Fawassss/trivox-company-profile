@@ -42,7 +42,7 @@ const projects = [
 
 export default function Work() {
     return (
-        <section className="bg-white text-black py-[120px] px-4 lg:px-[120px]">
+        <section id="work" className="bg-white text-black py-[120px] px-4 lg:px-[120px]">
             <div className="container mx-auto max-w-[1440px]">
                 {/* Header */}
                 <div className="flex justify-between items-baseline mb-[60px]">

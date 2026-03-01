@@ -1,7 +1,82 @@
 "use client";
 
 import Image from "next/image";
-import { motion, Variants } from "framer-motion";
+import { motion, Variants, useSpring, useMotionValue } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+
+const MagneticWrapper = ({ children }: { children: React.ReactNode }) => {
+    const ref = useRef<HTMLDivElement>(null);
+    const x = useMotionValue(0);
+    const y = useMotionValue(0);
+
+    const springX = useSpring(x, { stiffness: 150, damping: 15, mass: 0.1 });
+    const springY = useSpring(y, { stiffness: 150, damping: 15, mass: 0.1 });
+
+    const handleMouseMove = (e: React.MouseEvent) => {
+        if (!ref.current) return;
+        const { clientX, clientY } = e;
+        const { left, top, width, height } = ref.current.getBoundingClientRect();
+
+        const centerX = left + width / 2;
+        const centerY = top + height / 2;
+
+        const distanceX = clientX - centerX;
+        const distanceY = clientY - centerY;
+
+        // Influence range (magnetic pull strength)
+        x.set(distanceX * 0.35);
+        y.set(distanceY * 0.35);
+    };
+
+    const handleMouseLeave = () => {
+        x.set(0);
+        y.set(0);
+    };
+
+    return (
+        <motion.div
+            ref={ref}
+            onMouseMove={handleMouseMove}
+            onMouseLeave={handleMouseLeave}
+            style={{ x: springX, y: springY }}
+            className="inline-block"
+        >
+            {children}
+        </motion.div>
+    );
+};
+
+const StaggeredRollingText = ({ text, className }: { text: string; className?: string }) => {
+    return (
+        <motion.div
+            initial="initial"
+            whileHover="hovered"
+            className={`relative flex overflow-hidden ${className}`}
+        >
+            {text.split("").map((char, i) => (
+                <div key={i} className="relative">
+                    <motion.div
+                        variants={{
+                            initial: { y: 0 },
+                            hovered: { y: "100%" },
+                        }}
+                        transition={{
+                            duration: 0.3,
+                            ease: [0.33, 1, 0.68, 1],
+                            delay: i * 0.015,
+                        }}
+                        className="flex flex-col"
+                    >
+                        <span className="absolute bottom-full left-0">
+                            {char === " " ? "\u00A0" : char}
+                        </span>
+                        <span>{char === " " ? "\u00A0" : char}</span>
+                    </motion.div>
+                </div>
+            ))}
+        </motion.div>
+    );
+};
 
 const Hero = () => {
     const description = "Powering Brands with Imagination and Bold Impact — a digital elevation studio crafting meaningful experiences, distinctive identities, and bold digital solutions for modern brands.";
@@ -33,7 +108,7 @@ const Hero = () => {
     };
 
     return (
-        <section className="relative w-full min-h-screen bg-white pt-[100px] md:pt-[150px] overflow-hidden flex flex-col items-center justify-start pb-20">
+        <section id="home" className="relative w-full min-h-screen bg-white pt-[100px] md:pt-[150px] overflow-hidden flex flex-col items-center justify-start pb-20">
             <div className="w-full max-w-[1440px] px-4 md:px-6 flex flex-col gap-0 select-none">
 
                 {/* Row 1: Image + DIGITAL */}
@@ -59,7 +134,9 @@ const Hero = () => {
                             transition={{ duration: 1, delay: 0.2, ease: ease }}
                             className="font-anton text-[110px] sm:text-[180px] md:text-[260px] lg:text-[320px] leading-[0.9] text-black uppercase tracking-[0.01em] whitespace-nowrap"
                         >
-                            DIGITAL
+                            <MagneticWrapper>
+                                <StaggeredRollingText text="DIGITAL" className="cursor-pointer transition-colors duration-300" />
+                            </MagneticWrapper>
                         </motion.h1>
                     </div>
                 </div>
@@ -73,7 +150,9 @@ const Hero = () => {
                             transition={{ duration: 1, delay: 0.4, ease: ease }}
                             className="font-anton text-[110px] sm:text-[180px] md:text-[260px] lg:text-[320px] leading-[0.9] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
                         >
-                            ELEVATION
+                            <MagneticWrapper>
+                                <StaggeredRollingText text="ELEVATION" className="cursor-pointer transition-colors duration-300" />
+                            </MagneticWrapper>
                         </motion.h1>
 
                         {/* Star rotating after entry */}
@@ -112,7 +191,9 @@ const Hero = () => {
                             transition={{ duration: 1, delay: 0.6, ease: ease }}
                             className="font-anton text-[110px] sm:text-[180px] md:text-[260px] lg:text-[320px] leading-[0.9] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
                         >
-                            STUDIO
+                            <MagneticWrapper>
+                                <StaggeredRollingText text="STUDIO" className="cursor-pointer transition-colors duration-300" />
+                            </MagneticWrapper>
                         </motion.h1>
                     </div>
 
