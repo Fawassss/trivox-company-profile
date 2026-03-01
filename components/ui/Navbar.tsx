@@ -126,18 +126,18 @@ const Navbar = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setIsOpen(!isOpen)}
-                    className={`w-14 h-14 md:w-16 md:h-16 rounded-[18px] md:rounded-[22px] flex flex-col items-center justify-center gap-1.5 transition-colors overflow-hidden group shadow-xl ${isOpen ? "bg-transparent border border-white/20" : "bg-white"}`}
+                    className={`w-14 h-14 md:w-16 md:h-16 rounded-[18px] md:rounded-[22px] flex flex-col items-center justify-center gap-1.5 transition-colors overflow-hidden group shadow-xl ${isOpen ? "bg-transparent border border-black/10" : "bg-white"}`}
                 >
                     <motion.div
-                        animate={isOpen ? { rotate: 45, y: 7.5, backgroundColor: "#ffffff" } : { rotate: 0, y: 0, backgroundColor: "#000000" }}
+                        animate={isOpen ? { rotate: 45, y: 7.5, backgroundColor: "#000000" } : { rotate: 0, y: 0, backgroundColor: "#000000" }}
                         className="w-6 md:w-8 h-0.5 rounded-full transition-all"
                     />
                     <motion.div
-                        animate={isOpen ? { opacity: 0, x: 20, backgroundColor: "#ffffff" } : { opacity: 1, x: 0, backgroundColor: "#000000" }}
+                        animate={isOpen ? { opacity: 0, x: 20, backgroundColor: "#000000" } : { opacity: 1, x: 0, backgroundColor: "#000000" }}
                         className="w-6 md:w-8 h-0.5 rounded-full transition-all"
                     />
                     <motion.div
-                        animate={isOpen ? { rotate: -45, y: -7.5, backgroundColor: "#ffffff" } : { rotate: 0, y: 0, backgroundColor: "#000000" }}
+                        animate={isOpen ? { rotate: -45, y: -7.5, backgroundColor: "#000000" } : { rotate: 0, y: 0, backgroundColor: "#000000" }}
                         className="w-6 md:w-8 h-0.5 rounded-full transition-all"
                     />
                 </motion.button>
@@ -151,72 +151,47 @@ const Navbar = () => {
                         initial="hidden"
                         animate="visible"
                         exit="hidden"
-                        className="fixed top-0 right-0 w-full h-[100vh] sm:w-[500px] lg:w-[480px] bg-[#181818] z-[55] overflow-hidden shadow-[-20px_0_40px_rgba(0,0,0,0.5)]"
+                        className="fixed top-0 right-0 w-full h-[100vh] bg-white z-[55] overflow-hidden"
                     >
-                        <div className="h-full flex flex-col justify-between p-8 md:p-12 lg:p-16">
+                        <div className="h-full flex flex-col justify-center ">
                             {/* Nav Links */}
-                            <div className="mt-12 md:mt-16 flex flex-col gap-2 md:gap-4">
-                                <p className="text-white/30 font-poppins text-[10px] tracking-[0.3em] mb-4">NAVIGATION</p>
+                            <div className="flex flex-col w-full">
                                 {menuItems.map((item, i) => (
-                                    <div key={item.name} className="overflow-hidden">
-                                        <motion.div
-                                            custom={i}
-                                            variants={linkVariants}
-                                            initial="initial"
-                                            animate="animate"
-                                            exit="exit"
+                                    <motion.div
+                                        key={item.name}
+                                        custom={i}
+                                        variants={linkVariants}
+                                        initial="initial"
+                                        animate="animate"
+                                        exit="exit"
+                                        className="group relative w-full border-b border-zinc-100 last:border-none"
+                                    >
+                                        <Link
+                                            href={item.href}
+                                            onClick={() => setIsOpen(false)}
+                                            className="relative z-10 flex justify-between items-center w-full px-6 md:px-12 py-8 md:py-10 transition-colors duration-300 group-hover:text-white text-black"
                                         >
-                                            <Link
-                                                href={item.href}
-                                                onClick={() => setIsOpen(false)}
-                                                className="font-anton text-[32px] sm:text-[40px] md:text-[52px] lg:text-[64px] text-white hover:text-[#f80000] transition-colors uppercase leading-[0.95] block whitespace-nowrap"
-                                            >
+                                            <span className="font-anton text-[40px] md:text-[80px] lg:text-[100px] leading-[0.9] uppercase">
                                                 {item.name}
-                                            </Link>
-                                        </motion.div>
-                                    </div>
-                                ))}
-                            </div>
+                                            </span>
+                                            <span className="font-poppins font-bold text-[18px] md:text-[24px] opacity-40 group-hover:opacity-100 transition-opacity">
+                                                [{String(i + 1).padStart(2, '0')}]
+                                            </span>
+                                        </Link>
 
-                            {/* Socials */}
-                            <div className="flex flex-col gap-6 md:gap-8 overflow-hidden">
-                                <p className="text-white/30 font-poppins text-[10px] tracking-[0.3em]">SOCIAL MEDIA</p>
-                                <div className="grid grid-cols-2 gap-y-4 md:gap-y-6">
-                                    {socialItems.map((social, i) => (
-                                        <div key={social.name} className="overflow-hidden">
-                                            <motion.div
-                                                custom={i + menuItems.length}
-                                                variants={linkVariants}
-                                                initial="initial"
-                                                animate="animate"
-                                                exit="exit"
-                                            >
-                                                <Link
-                                                    href={social.href}
-                                                    target="_blank"
-                                                    className="group flex items-center gap-2"
-                                                >
-                                                    <span className="text-white font-poppins text-[12px] md:text-[14px] group-hover:text-[#f80000] transition-colors uppercase tracking-[0.1em]">
-                                                        {social.name}
-                                                    </span>
-                                                    <div className="w-1 md:w-1.5 h-1 md:h-1.5 rounded-full bg-white/20 group-hover:bg-[#f80000] transition-colors" />
-                                                </Link>
-                                            </motion.div>
-                                        </div>
-                                    ))}
-                                </div>
-                                <div className="pt-6 md:pt-8 border-t border-white/5">
-                                    <p className="text-white/20 font-poppins text-[10px] uppercase tracking-widest leading-none">
-                                        © 2026 TRIVOX STUDIO
-                                    </p>
-                                </div>
+                                        {/* Hover Background Expansion */}
+                                        <motion.div
+                                            className="absolute inset-0 bg-[#FF3838] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-[0.76, 0, 0.24, 1]"
+                                        />
+                                    </motion.div>
+                                ))}
                             </div>
                         </div>
                     </motion.div>
                 )}
             </AnimatePresence>
 
-            {/* Backdrop for mobile */}
+            {/* Backdrop for mobile (not really needed for fullscreen white, but kept for consistency) */}
             <AnimatePresence>
                 {isOpen && (
                     <motion.div
@@ -224,7 +199,7 @@ const Navbar = () => {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         onClick={() => setIsOpen(false)}
-                        className="fixed inset-0 bg-black/60 backdrop-blur-sm z-[50] lg:hidden"
+                        className="fixed inset-0 bg-white z-[50]"
                     />
                 )}
             </AnimatePresence>
