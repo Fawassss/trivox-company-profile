@@ -40,7 +40,7 @@ export default function Services() {
     };
 
     return (
-        <section className="bg-white text-black pt-[100px] pb-[200px] overflow-hidden w-full">
+        <section id="services" className="bg-white text-black pt-[100px] pb-[200px] overflow-hidden w-full">
             <div className="px-4 md:px-[60px] lg:px-[120px] mb-[100px]">
                 <div className="container mx-auto max-w-[1440px]">
                     {/* Header */}

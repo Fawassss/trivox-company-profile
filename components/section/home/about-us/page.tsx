@@ -101,7 +101,7 @@ const Marquee = () => {
 
 export default function AboutUs() {
     return (
-        <section className="bg-white text-black font-poppins selection:bg-black selection:text-white">
+        <section id="about-us" className="bg-white text-black font-poppins selection:bg-black selection:text-white">
             {/* Marquee Section */}
             <Marquee />
 

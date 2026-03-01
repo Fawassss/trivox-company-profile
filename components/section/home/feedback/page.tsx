@@ -128,7 +128,7 @@ export const feedbackData = [
 
 export default function ClientFeedback() {
     return (
-        <section className="relative w-full h-[400vh] bg-white">
+        <section id="testimonials" className="relative w-full h-[400vh] bg-white">
             {/* Background Text - Sticky */}
             <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden z-0">
                 <div className="flex flex-col items-center select-none pointer-events-none">
