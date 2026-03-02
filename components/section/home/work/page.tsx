@@ -42,29 +42,29 @@ const projects = [
 
 export default function Work() {
     return (
-        <section id="work" className="bg-white text-black py-[120px] px-4 lg:px-[120px]">
-            <div className="container mx-auto max-w-[1440px]">
+        <section id="work" className="bg-white text-black py-[10vh] lg:py-[15vh] px-[4vw] md:px-[8vw]">
+            <div className="w-full">
                 {/* Header */}
-                <div className="flex justify-between items-baseline mb-[60px]">
-                    <h2 className="font-anton text-[60px] md:text-[80px] lg:text-[120px] leading-none uppercase">
+                <div className="flex justify-between items-baseline mb-[5vw]">
+                    <h2 className="font-anton text-[12vw] md:text-[8vw] lg:text-[7vw] leading-none uppercase">
                         OUR WORK (9)
                     </h2>
-                    <span className="font-anton text-[40px] md:text-[60px] lg:text-[80px] leading-none uppercase">
+                    <span className="font-anton text-[8vw] md:text-[5vw] lg:text-[4vw] leading-none uppercase">
                         2526©
                     </span>
                 </div>
 
                 {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[12px] gap-y-[30px]">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[1vw] gap-y-[3vw]">
                     {projects.map((project, idx) => (
                         <ProjectCard key={idx} project={project} idx={idx} />
                     ))}
                 </div>
 
                 {/* Button */}
-                <div className="flex justify-center mt-[80px]">
+                <div className="flex justify-center mt-[6vw]">
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
+                        initial={{ opacity: 0, y: "2vw" }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
@@ -95,7 +95,7 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: "2vw" }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: idx * 0.1 }}
@@ -104,7 +104,7 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
             <Link href={`/works/${project.slug}`} className="cursor-pointer">
                 {/* Image Container */}
                 <div
-                    className="relative aspect-square overflow-hidden mb-4 rounded-sm"
+                    className="relative aspect-square overflow-hidden mb-[1vw] rounded-sm"
                     onMouseEnter={() => setIsHovered(true)}
                     onMouseLeave={() => setIsHovered(false)}
                     onMouseMove={handleMouseMove}
@@ -131,8 +131,8 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
                             scale: isHovered ? 1 : 0,
                         }}
                     >
-                        <div className="px-6 py-3 border border-white rounded-full bg-white/20 backdrop-blur-md flex items-center gap-2 whitespace-nowrap overflow-hidden">
-                            <div className="relative h-5 overflow-hidden flex flex-col items-center">
+                        <div className="px-[1.5vw] py-[0.8vw] border border-white rounded-full bg-white/20 backdrop-blur-md flex items-center gap-[0.5vw] whitespace-nowrap overflow-hidden">
+                            <div className="relative h-[1.25vw] overflow-hidden flex flex-col items-center">
                                 <div className="flex">
                                     {"View Project".split("").map((char, i) => (
                                         <motion.span
@@ -140,34 +140,34 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
                                             animate={isHovered ? "hover" : "initial"}
                                             variants={{
                                                 initial: { y: 0 },
-                                                hover: { y: -24 }
+                                                hover: { y: "-1.5vw" }
                                             }}
                                             transition={{
                                                 duration: 1,
                                                 ease: [0.22, 1, 0.36, 1],
                                                 delay: i * 0.01
                                             }}
-                                            className="text-white font-poppins text-sm uppercase tracking-wider inline-block"
+                                            className="text-white font-poppins text-[0.8vw] uppercase tracking-wider inline-block"
                                         >
                                             {char === " " ? "\u00A0" : char}
                                         </motion.span>
                                     ))}
                                 </div>
-                                <div className="flex absolute top-6">
+                                <div className="flex absolute top-[1.5vw]">
                                     {"View Project".split("").map((char, i) => (
                                         <motion.span
                                             key={i}
                                             animate={isHovered ? "hover" : "initial"}
                                             variants={{
                                                 initial: { y: 0 },
-                                                hover: { y: -24 }
+                                                hover: { y: "-1.5vw" }
                                             }}
                                             transition={{
                                                 duration: 1,
                                                 ease: [0.22, 1, 0.36, 1],
                                                 delay: i * 0.01
                                             }}
-                                            className="text-white font-poppins text-sm uppercase tracking-wider inline-block"
+                                            className="text-white font-poppins text-[0.8vw] uppercase tracking-wider inline-block"
                                         >
                                             {char === " " ? "\u00A0" : char}
                                         </motion.span>
@@ -175,8 +175,8 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
                                 </div>
                             </div>
                             <svg
-                                width="14"
-                                height="14"
+                                width="1vw"
+                                height="1vw"
                                 viewBox="0 0 15 15"
                                 fill="none"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -198,15 +198,15 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
                 </div>
 
                 {/* Text Info */}
-                <div className="flex flex-col gap-1">
-                    <h3 className="font-anton text-[24px] uppercase leading-none">
+                <div className="flex flex-col gap-0">
+                    <h3 className="font-anton text-[2vw] md:text-[1.8vw] uppercase leading-none">
                         {project.name}
                     </h3>
                     <div className="flex justify-between items-center opacity-60">
-                        <p className="font-poppins text-[16px] leading-[1.3]">
+                        <p className="font-poppins text-[1vw] leading-[1.3]">
                             {project.category}
                         </p>
-                        <p className="font-poppins text-[16px] leading-[1.3]">
+                        <p className="font-poppins text-[1vw] leading-[1.3]">
                             {project.year}
                         </p>
                     </div>
@@ -251,18 +251,19 @@ function MagneticButton() {
         >
             <Link
                 href="/works"
-                className="flex items-center gap-2 bg-[#010101] text-white px-[28px] py-[14px] rounded-[32px] transition-all"
+                className="flex items-center gap-[0.5vw] bg-[#010101] text-white px-[2vw] py-[1vw] rounded-[3vw] transition-all"
             >
-                <Image
-                    src="/images/star.svg"
-                    alt="star"
-                    width={16}
-                    height={16}
-                    style={{
-                        filter: "invert(13%) sepia(85%) saturate(7465%) hue-rotate(358deg) brightness(101%) contrast(117%)"
-                    }}
-                />
-                <span className="font-poppins text-[18px] leading-[1.3]">
+                <div className="w-[1vw] h-[1vw] relative flex items-center justify-center">
+                    <Image
+                        src="/images/star.svg"
+                        alt="star"
+                        fill
+                        style={{
+                            filter: "invert(13%) sepia(85%) saturate(7465%) hue-rotate(358deg) brightness(101%) contrast(117%)"
+                        }}
+                    />
+                </div>
+                <span className="font-poppins text-[1.2vw] leading-[1.3]">
                     View All Work
                 </span>
             </Link>

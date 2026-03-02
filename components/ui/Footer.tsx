@@ -204,37 +204,37 @@ export default function Footer() {
                 ))}
             </div>
 
-            <div className="relative w-full bg-black text-white rounded-t-[200px] pt-32 pb-16 px-6 md:px-12 lg:px-20 z-20">
-                <div className="max-w-[1440px] mx-auto text-center md:text-left">
-                    <div className="grid grid-cols-1 md:grid-cols-3 items-start gap-10 mb-20">
-                        <div className="max-w-[320px] mx-auto md:mx-0">
-                            <p className="font-poppins text-[18px] lg:text-[20px] leading-[1.3] font-normal">
+            <div className="relative w-full bg-black text-white rounded-t-[15vw] pt-[8vw] pb-[4vw] px-[10vw] z-20">
+                <div className="mx-auto text-center md:text-left w-full">
+                    <div className="grid grid-cols-1 md:grid-cols-3 items-start gap-[5vw] mb-[6vw]">
+                        <div className="max-w-[22vw] mx-auto md:mx-0">
+                            <p className="font-poppins text-[1.2vw] min-text-[16px] leading-[1.3] font-normal">
                                 We invite you to contact our team for more information
                             </p>
                         </div>
                         <div className="flex justify-center">
-                            <a href="mailto:hello@trivox.com" className="font-poppins text-[18px] lg:text-[20px] leading-[1.3] font-normal">
+                            <a href="mailto:hello@trivox.com" className="font-poppins text-[1.2vw] min-text-[16px] leading-[1.3] font-normal">
                                 Let’s Connect
                             </a>
                         </div>
                         <div className="md:text-right">
-                            <p className="font-poppins text-[18px] lg:text-[20px] leading-[1.3] font-normal">
+                            <p className="font-poppins text-[1.2vw] min-text-[16px] leading-[1.3] font-normal">
                                 © {year} Trivox Studio. <br className="hidden md:block" /> All Rights Reserved.
                             </p>
                         </div>
                     </div>
 
-                    <div className="w-full flex justify-center mb-12 overflow-hidden">
-                        <h2 className="font-anton text-[80px] sm:text-[140px] md:text-[180px] lg:text-[225px] xl:text-[280px] leading-[0.8] uppercase text-white tracking-[-0.01em] whitespace-nowrap select-none pt-6 pb-4">
+                    <div className="w-full flex justify-center mb-[4vw] overflow-hidden">
+                        <h2 className="font-anton text-[18vw] sm:text-[19vw] md:text-[19.2vw] lg:text-[18vw] xl:text-[15.5vw] leading-[0.8] uppercase text-white tracking-[-0.01em] whitespace-nowrap select-none pt-[2vw] pb-[1vw]">
                             TRIVOX STUDIO
                         </h2>
                     </div>
 
-                    <div className="flex justify-center mt-12">
-                        <button onClick={scrollToTop} className="group flex flex-col items-center gap-3 font-poppins text-[18px] leading-[1.3] font-normal hover:text-[#F80000] transition-colors">
-                            <span className="uppercase tracking-widest text-lg flex items-center gap-2">
+                    <div className="flex justify-center mt-[4vw]">
+                        <button onClick={scrollToTop} className="group flex flex-col items-center gap-[1vw] font-poppins text-[1.1vw] min-text-[14px] leading-[1.3] font-normal hover:text-[#F80000] transition-colors">
+                            <span className="uppercase tracking-widest flex items-center gap-[0.5vw]">
                                 <span>[</span>
-                                <ArrowUp size={24} strokeWidth={2} />
+                                <ArrowUp className="w-[1.5vw] h-[1.5vw] min-w-[20px] min-h-[20px]" strokeWidth={2} />
                                 <span>]</span>
                                 Back to Top
                             </span>

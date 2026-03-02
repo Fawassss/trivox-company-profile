@@ -63,7 +63,7 @@ const marqueeItems = [
 
 const Marquee = () => {
     return (
-        <div className="bg-[#010101] py-[24px] overflow-hidden flex items-center h-[122px] w-full">
+        <div className="bg-[#010101] py-[1.5vw] overflow-hidden flex items-center h-[10vw] w-full">
             <motion.div
                 className="flex whitespace-nowrap items-center shrink-0"
                 animate={{ x: [0, "-50%"] }}
@@ -78,7 +78,7 @@ const Marquee = () => {
                     <div key={i} className="flex items-center shrink-0">
                         {marqueeItems.map((text, idx) => (
                             <div key={idx} className="flex items-center shrink-0">
-                                <span className="font-anton text-[40px] lg:text-[64px] font-normal text-white uppercase leading-none px-[30px] lg:px-[40px]">
+                                <span className="font-anton text-[5vw] lg:text-[5vw] font-normal text-white uppercase leading-none px-[4vw]">
                                     {text}
                                 </span>
                                 <div className="flex items-center justify-center shrink-0">
@@ -87,7 +87,7 @@ const Marquee = () => {
                                         alt="star"
                                         width={64}
                                         height={64}
-                                        className="w-[40px] h-[40px] lg:w-[64px] lg:h-[64px] block translate-y-[-2px] lg:translate-y-[-4px]"
+                                        className="w-[4vw] h-[4vw] lg:w-[4.5vw] lg:h-[4.5vw] block translate-y-[-0.2vw] lg:translate-y-[-0.3vw]"
                                     />
                                 </div>
                             </div>
@@ -106,22 +106,22 @@ export default function AboutUs() {
             <Marquee />
 
             {/* Content Section */}
-            <div className="container mx-auto px-6 lg:px-[120px] py-[100px] lg:py-[160px]">
+            <div className="w-full px-[4vw] md:px-[8vw] py-[10vh] lg:py-[15vh]">
                 {/* Label and Star */}
-                <div className="flex items-center gap-2 mb-[48px]">
+                <div className="flex items-center gap-[0.5vw] mb-[4vw]">
                     <Image
                         src="/images/star.svg"
                         alt="star"
                         width={20}
                         height={20}
-                        className="w-[20px] h-[20px]"
+                        className="w-[1.5vw] h-[1.5vw]"
                     />
-                    <span className="text-[24px] font-normal">About us</span>
+                    <span className="text-[2vw] md:text-[1.5vw] font-normal uppercase tracking-wider">About us</span>
                 </div>
 
                 {/* Main Text with Scroll Animation */}
-                <div className="max-w-[1240px]">
-                    <h2 className="text-[24px] md:text-[36px] lg:text-[48px] font-normal leading-tight">
+                <div className="w-full max-w-[100%]">
+                    <h2 className="text-[5vw] md:text-[4vw] lg:text-[3.2vw] font-normal leading-[1.2]">
                         <AnimatedText
                             text="We came together with a shared vision to build inspiring brands and impactful designs. From a small team of passionate creatives, we’ve grown into a creative studio dedicated to transforming ideas into meaningful, lasting digital experiences."
                         />
@@ -134,14 +134,14 @@ export default function AboutUs() {
                     initial="hidden"
                     whileInView="visible"
                     viewport={{ once: true, margin: "-100px" }}
-                    className="mt-[100px] lg:mt-[160px] flex flex-col-reverse lg:flex-row justify-between items-start lg:items-end gap-12"
+                    className="mt-[10vh] lg:mt-[15vh] flex flex-col-reverse lg:flex-row justify-between items-start lg:items-end gap-[4vw]"
                 >
                     {/* Left Text */}
-                    <div className="max-w-[180px]">
+                    <div className="max-w-[20vw]">
                         <div className="overflow-hidden">
                             <motion.p
                                 variants={textVariants}
-                                className="text-[18px] font-normal leading-tight cursor-default"
+                                className="text-[1.2vw] font-normal leading-tight cursor-default"
                             >
                                 we came to
                             </motion.p>
@@ -149,7 +149,7 @@ export default function AboutUs() {
                         <div className="overflow-hidden">
                             <motion.p
                                 variants={textVariants}
-                                className="text-[18px] font-normal leading-tight cursor-default"
+                                className="text-[1.2vw] font-normal leading-tight cursor-default"
                             >
                                 change the world
                             </motion.p>
@@ -161,16 +161,35 @@ export default function AboutUs() {
                         {[
                             "A CREATIVE HUB FOR",
                             "TODAY'S VISIONARIES"
-                        ].map((line, idx) => (
+                        ].map((line, idx) => (idx === 0 ? (
                             <div key={idx} className="overflow-hidden">
                                 <motion.h3
                                     variants={textVariants}
-                                    className="font-anton text-[48px] md:text-[64px] lg:text-[96px] leading-[1.2] text-right uppercase"
+                                    className="font-anton text-[7vw] md:text-[6vw] lg:text-[6.5vw] leading-[1.1] text-right uppercase"
                                 >
                                     {line}
                                 </motion.h3>
                             </div>
-                        ))}
+                        ) : (
+                            <div key={idx} className="overflow-hidden">
+                                <section className="flex flex-col lg:flex-row items-center gap-[2vw]">
+                                    <div className="w-[12vw] h-[5vw] relative rounded-full overflow-hidden hidden md:block border border-black">
+                                        <Image
+                                            src="/images/hero.webp"
+                                            alt="visionary image"
+                                            fill
+                                            className="object-cover grayscale"
+                                        />
+                                    </div>
+                                    <motion.h3
+                                        variants={textVariants}
+                                        className="font-anton text-[7vw] md:text-[6vw] lg:text-[6.5vw] leading-[1.1] text-right uppercase"
+                                    >
+                                        {line}
+                                    </motion.h3>
+                                </section>
+                            </div>
+                        )))}
                     </div>
                 </motion.div>
             </div>

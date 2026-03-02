@@ -12,7 +12,7 @@ export const feedbackData = [
         role: "Startup Founder",
         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=FarisMaulana",
         stars: 5,
-        position: { top: "5%", left: "10%" }
+        position: { top: "5%", left: "0%" }
     },
     {
         id: 2,
@@ -22,7 +22,7 @@ export const feedbackData = [
         role: "Product Manager",
         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=ShandyPratama",
         stars: 5,
-        position: { top: "15%", left: "60%" }
+        position: { top: "15%", left: "75%" }
     },
     {
         id: 3,
@@ -32,7 +32,7 @@ export const feedbackData = [
         role: "Tech Lead",
         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=RizkyAditya",
         stars: 5,
-        position: { top: "25%", left: "15%" }
+        position: { top: "25%", left: "10%" }
     },
     {
         id: 4,
@@ -42,7 +42,7 @@ export const feedbackData = [
         role: "UI/UX Designer",
         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=DimasSaputra",
         stars: 5,
-        position: { top: "35%", left: "55%" }
+        position: { top: "35%", left: "70%" }
     },
     {
         id: 5,
@@ -72,7 +72,7 @@ export const feedbackData = [
         role: "Brand Strategist",
         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=NabilaPutri",
         stars: 5,
-        position: { top: "65%", left: "12%" }
+        position: { top: "60%", left: "12%" }
     },
     {
         id: 8,
@@ -82,7 +82,7 @@ export const feedbackData = [
         role: "Fullstack Engineer",
         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=RafiAkbar",
         stars: 5,
-        position: { top: "75%", left: "60%" }
+        position: { top: "75%", left: "75%" }
     },
     {
         id: 9,
@@ -92,7 +92,7 @@ export const feedbackData = [
         role: "Startup Advisor",
         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=SintaMaharani",
         stars: 5,
-        position: { top: "85%", left: "20%" }
+        position: { top: "85%", left: "0%" }
     },
     {
         id: 10,
@@ -122,7 +122,7 @@ export const feedbackData = [
         role: "Growth Lead",
         image: "https://api.dicebear.com/7.x/avataaars/svg?seed=KevinArdiansyah",
         stars: 5,
-        position: { top: "70%", left: "35%" }
+        position: { top: "75%", left: "40%" }
     }
 ];
 
@@ -130,29 +130,29 @@ export default function ClientFeedback() {
     return (
         <section id="testimonials" className="relative w-full h-[400vh] bg-white">
             {/* Background Text - Sticky */}
-            <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden z-0">
-                <div className="flex flex-col items-center select-none pointer-events-none">
-                    <h2 className="font-anton text-[120px] md:text-[180px] lg:text-[240px] leading-[0.85] text-[#010101] text-center uppercase">
+            <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden z-0 px-[4vw]">
+                <div className="flex flex-col items-center select-none pointer-events-none gap-[3vw]">
+                    <h2 className="font-anton text-[8vw] md:text-[12vw] lg:text-[12vw] leading-[0.8] text-[#010101] text-center uppercase">
                         CLIENT
                     </h2>
-                    <h2 className="font-anton text-[120px] md:text-[180px] lg:text-[240px] leading-[0.85] text-[#010101] text-center uppercase">
+                    <h2 className="font-anton text-[8vw] md:text-[12vw] lg:text-[12vw] leading-[0.8] text-[#010101] text-center uppercase">
                         FEEDBACK
                     </h2>
                 </div>
             </div>
 
-            {/* Scrolling Cards Container */}
+            {/* Scrolling Cards Container - Edge to Edge */}
             <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none">
-                <div className="relative w-full h-full container mx-auto">
+                <div className="relative w-full h-full">
                     {feedbackData.map((card) => (
                         <FeedbackCard key={card.id} {...card} />
                     ))}
                 </div>
             </div>
 
-            {/* Mobile View - Static Grid (Alternative) */}
-            <div className="lg:hidden bg-white pb-20 relative z-20">
-                <div className="container mx-auto px-4 grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Mobile View - Static Grid (Alternative) - Edge to Edge */}
+            <div className="lg:hidden bg-white pb-[10vh] relative z-20 w-full overflow-hidden">
+                <div className="w-full px-[4vw] grid grid-cols-1 md:grid-cols-2 gap-[4vw]">
                     {feedbackData.map((card) => (
                         <FeedbackCard key={card.id} {...card} isStatic />
                     ))}
@@ -170,42 +170,42 @@ function FeedbackCard({ title, description, name, role, image, stars, position, 
 
     return (
         <motion.div
-            initial={{ opacity: 0, y: 50 }}
+            initial={{ opacity: 0, y: "5vw" }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: false, margin: "-100px" }}
             whileHover={{ scale: 1.02, transition: { duration: 0.2 } }}
             style={style}
-            className={`w-[395px] min-h-[346px] bg-[#010101]/95 p-8 flex flex-col gap-8 rounded-sm text-white shadow-2xl backdrop-blur-md pointer-events-auto transition-shadow hover:shadow-red-500/10 ${isStatic ? "relative w-full" : ""
+            className={`w-[85vw] md:w-[45vw] lg:w-[25vw] min-h-[40vh] md:min-h-[30vh] lg:min-h-[22vw] bg-[#010101]/95 p-[3vw] flex flex-col gap-[2vw] rounded-sm text-white shadow-2xl backdrop-blur-md pointer-events-auto transition-shadow hover:shadow-red-500/10 ${isStatic ? "relative w-full" : ""
                 }`}
         >
             {/* Stars */}
-            <div className="flex justify-end gap-[6px]">
+            <div className="flex justify-end gap-[0.4vw]">
                 {[...Array(stars)].map((_, i) => (
-                    <Image
-                        key={i}
-                        src="/images/star.svg"
-                        alt="star"
-                        width={16}
-                        height={16}
-                        className="w-4 h-4"
-                        unoptimized
-                    />
+                    <div key={i} className="relative w-[1.2vw] h-[1.2vw] md:w-[1vw] md:h-[1vw]">
+                        <Image
+                            src="/images/star.svg"
+                            alt="star"
+                            fill
+                            className="object-contain"
+                            unoptimized
+                        />
+                    </div>
                 ))}
             </div>
 
             {/* Content */}
-            <div className="flex flex-col gap-4 flex-grow">
-                <h3 className="font-poppins font-bold text-[24px] leading-[1.1]">
+            <div className="flex flex-col gap-[1vw] flex-grow text-left">
+                <h3 className="font-poppins font-bold text-[5vw] md:text-[2.2vw] lg:text-[1.6vw] leading-[1.1]">
                     {title}
                 </h3>
-                <p className="font-poppins font-normal text-[16px] leading-[1.3] opacity-80">
+                <p className="font-poppins font-normal text-[3.5vw] md:text-[1.4vw] lg:text-[1vw] leading-[1.4] opacity-80">
                     {description}
                 </p>
             </div>
 
             {/* Footer */}
-            <div className="flex items-center gap-3 mt-auto">
-                <div className="relative w-[42px] h-[42px] rounded-full overflow-hidden border border-white/20">
+            <div className="flex items-center gap-[1vw] mt-auto border-t border-white/10 pt-[1.5vw]">
+                <div className="relative w-[8vw] h-[8vw] md:w-[4vw] md:h-[4vw] lg:w-[3vw] lg:h-[3vw] rounded-full overflow-hidden border border-white/20 shrink-0">
                     <Image
                         src={image}
                         alt={name}
@@ -215,10 +215,10 @@ function FeedbackCard({ title, description, name, role, image, stars, position, 
                     />
                 </div>
                 <div className="flex flex-col">
-                    <span className="font-poppins font-bold text-[18px] leading-[1.1]">
+                    <span className="font-poppins font-bold text-[4vw] md:text-[1.6vw] lg:text-[1.2vw] leading-[1.1]">
                         {name}
                     </span>
-                    <span className="font-poppins font-normal text-[16px] leading-[1.1] opacity-60">
+                    <span className="font-poppins font-normal text-[3.5vw] md:text-[1.4vw] lg:text-[1vw] leading-[1.1] opacity-60">
                         {role}
                     </span>
                 </div>
