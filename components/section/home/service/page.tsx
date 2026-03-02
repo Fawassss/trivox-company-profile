@@ -40,19 +40,19 @@ export default function Services() {
     };
 
     return (
-        <section id="services" className="bg-white text-black pt-[100px] pb-[200px] overflow-hidden w-full">
-            <div className="px-4 md:px-[60px] lg:px-[120px] mb-[100px]">
-                <div className="container mx-auto max-w-[1440px]">
+        <section id="services" className="bg-white text-black pt-[10vh] pb-[15vh] overflow-hidden w-full">
+            <div className="px-[4vw] md:px-[8vw] mb-[5vw]">
+                <div className="w-full">
                     {/* Header */}
                     <motion.div
                         variants={containerVariants}
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true }}
-                        className="flex flex-col lg:flex-row justify-between items-baseline gap-4"
+                        className="flex flex-col lg:flex-row justify-between items-baseline gap-[2vw]"
                     >
                         <div className="overflow-hidden">
-                            <h2 className="font-anton text-[80px] md:text-[120px] lg:text-[160px] leading-none uppercase select-none flex">
+                            <h2 className="font-anton text-[12vw] md:text-[10vw] lg:text-[9vw] leading-none uppercase select-none flex">
                                 {"OUR SERVICES".split("").map((char, i) => (
                                     <motion.span
                                         key={i}
@@ -64,10 +64,10 @@ export default function Services() {
                                 ))}
                             </h2>
                         </div>
-                        <div className="overflow-hidden lg:mb-4">
+                        <div className="overflow-hidden lg:mb-[1vw]">
                             <motion.span
                                 variants={textVariants}
-                                className="font-poppins text-[18px] md:text-[24px] leading-none select-none inline-block"
+                                className="font-poppins text-[4vw] md:text-[1.8vw] leading-none select-none inline-block border-b border-black pb-[0.3vw]"
                             >
                                 What We Do
                             </motion.span>
@@ -77,7 +77,7 @@ export default function Services() {
             </div>
 
             {/* Services List - Full Width */}
-            <div className="flex flex-col w-full">
+            <div className="flex flex-col w-full border-t border-black/10">
                 {services.map((service, index) => (
                     <ServiceItem
                         key={index}
@@ -93,12 +93,13 @@ export default function Services() {
 function ServiceItem({ id, title }: { id: string; title: string }) {
     const [isHovered, setIsHovered] = useState(false);
     const text = `${id} - ${title}`;
+    const itemHeight = "7.5vw"; // Viewport-based height
 
     return (
         <motion.div
             onMouseEnter={() => setIsHovered(true)}
             onMouseLeave={() => setIsHovered(false)}
-            className="group relative w-full h-[91px] flex items-center justify-end px-4 md:px-[30px] lg:px-[40px] border-b border-black/10 last:border-b-0 cursor-pointer overflow-hidden transition-colors duration-300"
+            className="group relative w-full h-[15vw] md:h-[7.5vw] flex items-center justify-end px-[4vw] md:px-[8vw] border-b border-black/10 last:border-b-0 cursor-pointer overflow-hidden transition-colors duration-300"
         >
             {/* Background Color Transition Overlay */}
             <motion.div
@@ -108,19 +109,19 @@ function ServiceItem({ id, title }: { id: string; title: string }) {
                 className="absolute inset-0 bg-[#F80000] z-0"
             />
 
-            <div className="relative z-10 flex items-center gap-6 lg:gap-12 select-none">
-                <div className="h-[68px] overflow-hidden flex flex-col items-end">
+            <div className="relative z-10 flex items-center gap-[4vw] lg:gap-[6vw] select-none">
+                <div className="h-[10vw] md:h-[5vw] overflow-hidden flex flex-col items-end">
                     <div className="flex">
                         {text.split("").map((char, i) => (
                             <motion.span
                                 key={i}
-                                animate={isHovered ? { y: -68 } : { y: 0 }}
+                                animate={isHovered ? { y: "-100%" } : { y: 0 }}
                                 transition={{
                                     duration: 0.5,
                                     ease: [0.33, 1, 0.68, 1],
                                     delay: i * 0.01
                                 }}
-                                className="font-anton text-[32px] md:text-[48px] lg:text-[56px] leading-[1.2] uppercase text-black inline-block h-[68px]"
+                                className="font-anton text-[6vw] md:text-[4vw] lg:text-[3.5vw] leading-[1.2] uppercase text-black inline-block h-[10vw] md:h-[5vw] flex items-center"
                             >
                                 {char === " " ? "\u00A0" : char}
                             </motion.span>
@@ -130,13 +131,13 @@ function ServiceItem({ id, title }: { id: string; title: string }) {
                         {text.split("").map((char, i) => (
                             <motion.span
                                 key={i}
-                                animate={isHovered ? { y: -68 } : { y: 0 }}
+                                animate={isHovered ? { y: "-100%" } : { y: 0 }}
                                 transition={{
                                     duration: 0.5,
                                     ease: [0.33, 1, 0.68, 1],
                                     delay: i * 0.01
                                 }}
-                                className="font-anton text-[32px] md:text-[48px] lg:text-[56px] leading-[1.2] uppercase text-white inline-block h-[68px]"
+                                className="font-anton text-[6vw] md:text-[4vw] lg:text-[3.5vw] leading-[1.2] uppercase text-white inline-block h-[10vw] md:h-[5vw] flex items-center"
                             >
                                 {char === " " ? "\u00A0" : char}
                             </motion.span>
@@ -145,14 +146,13 @@ function ServiceItem({ id, title }: { id: string; title: string }) {
                 </div>
 
                 <motion.div
-                    initial={{ opacity: 0, x: -20, scale: 0.5 }}
-                    animate={isHovered ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: -20, scale: 0.5 }}
+                    initial={{ opacity: 0, x: "-2vw", scale: 0.5 }}
+                    animate={isHovered ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: "-2vw", scale: 0.5 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
                     className="text-white"
                 >
                     <svg
-                        width="72"
-                        height="72"
+                        className="w-[8vw] h-[8vw] md:w-[4vw] md:h-[4vw]"
                         viewBox="0 0 24 24"
                         fill="none"
                         stroke="currentColor"

@@ -99,7 +99,7 @@ const Navbar = () => {
                     </div>
 
                     <div className="flex-1 flex justify-end">
-                        <ul className="flex flex-col items-end space-y-[0.3vw]">
+                        <ul className="flex flex-col items-start space-y-[0.5vw]">
                             {menuItems.map((item) => (
                                 <li key={item.name}>
                                     <Link

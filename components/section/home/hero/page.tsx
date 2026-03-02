@@ -108,16 +108,16 @@ const Hero = () => {
     };
 
     return (
-        <section id="home" className="relative w-full min-h-screen bg-white pt-[100px] md:pt-[150px] overflow-hidden flex flex-col items-center justify-start pb-20">
-            <div className="w-full max-w-[1440px] px-4 md:px-6 flex flex-col gap-0 select-none">
+        <section id="home" className="relative w-full min-h-screen bg-white pt-[10vh] md:pt-[15vh] overflow-hidden flex flex-col items-center justify-start pb-[10vh]">
+            <div className="w-full px-[4vw] md:px-[8vw] flex flex-col gap-0 select-none">
 
                 {/* Row 1: Image + DIGITAL */}
-                <div className="flex items-end mb-0 lg:mb-2 text-black">
+                <div className="flex items-end mb-0 lg:mb-[1vw] text-black">
                     <motion.div
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, ease: "easeOut" }}
-                        className="relative w-[200px] h-[225px] md:w-[264px] md:h-[320px] shrink-0 z-20"
+                        className="relative w-[32vw] h-[36vw] md:w-[14vw] md:h-[20vw] shrink-0 z-20"
                     >
                         <Image
                             src="/images/hero.webp"
@@ -132,7 +132,7 @@ const Hero = () => {
                             initial={{ x: "100%", opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ duration: 1, delay: 0.2, ease: ease }}
-                            className="font-anton text-[110px] sm:text-[180px] md:text-[260px] lg:text-[320px] leading-[0.9] text-black uppercase tracking-[0.01em] whitespace-nowrap"
+                            className="font-anton text-[24vw] sm:text-[23vw] md:text-[22vw] lg:text-[22vw] xl:text-[19vw] leading-[0.85] text-black uppercase tracking-[0.01em] whitespace-nowrap"
                         >
                             <MagneticWrapper>
                                 <StaggeredRollingText text="DIGITAL" className="cursor-pointer transition-colors duration-300" />
@@ -148,7 +148,7 @@ const Hero = () => {
                             initial={{ x: "-100%", opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ duration: 1, delay: 0.4, ease: ease }}
-                            className="font-anton text-[110px] sm:text-[180px] md:text-[260px] lg:text-[320px] leading-[0.9] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
+                            className="font-anton text-[24vw] sm:text-[23vw] md:text-[22vw] lg:text-[22vw] xl:text-[19vw] leading-[0.85] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
                         >
                             <MagneticWrapper>
                                 <StaggeredRollingText text="ELEVATION" className="cursor-pointer transition-colors duration-300" />
@@ -170,7 +170,7 @@ const Hero = () => {
                             }}
                             className="absolute top-0 right-[-15%] md:right-[-25%] lg:right-[-18%] -translate-y-[65%] pointer-events-none"
                         >
-                            <div className="relative w-[100px] h-[100px] md:w-[200px] md:h-[200px] lg:w-[350px] lg:h-[350px]">
+                            <div className="relative w-[25vw] h-[25vw] md:w-[15vw] md:h-[15vw] lg:w-[24vw] lg:h-[22vw]">
                                 <Image
                                     src="/images/star.svg"
                                     alt="Star"
@@ -183,13 +183,13 @@ const Hero = () => {
                 </div>
 
                 {/* Row 3: STUDIO + Description */}
-                <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between mt-0 md:mt-4 gap-4 lg:gap-10">
+                <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between mt-0 md:mt-[2vw] gap-[2vw] lg:gap-[2vw]">
                     <div className="order-2 lg:order-1">
                         <motion.h1
                             initial={{ x: "100%", opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ duration: 1, delay: 0.6, ease: ease }}
-                            className="font-anton text-[110px] sm:text-[180px] md:text-[260px] lg:text-[320px] leading-[0.9] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
+                            className="font-anton text-[24vw] sm:text-[23vw] md:text-[22vw] lg:text-[22vw] xl:text-[19vw] leading-[0.85] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
                         >
                             <MagneticWrapper>
                                 <StaggeredRollingText text="STUDIO" className="cursor-pointer transition-colors duration-300" />
@@ -203,14 +203,14 @@ const Hero = () => {
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
-                        className="order-1 lg:order-2 max-w-[450px] lg:max-w-[500px] lg:mb-12 xl:mb-16"
+                        className="order-1 lg:order-2 max-w-[80vw] lg:max-w-[35vw] lg:mb-[3.5vw] xl:mb-[3.5vw]"
                     >
                         <div className="flex flex-wrap items-start justify-start gap-x-[0.35em] gap-y-0 text-left">
                             {words.map((word, idx) => (
                                 <div key={idx} className="overflow-hidden">
                                     <motion.span
                                         variants={wordVariants}
-                                        className="inline-block font-poppins font-normal text-[18px] md:text-[22px] lg:text-[24px] leading-[1.4] text-black"
+                                        className="inline-block font-poppins font-normal text-[4vw] md:text-[1.8vw] lg:text-[1.4vw] leading-[1.4] text-black"
                                     >
                                         {word}
                                     </motion.span>
