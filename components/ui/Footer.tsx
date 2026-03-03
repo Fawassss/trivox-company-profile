@@ -231,7 +231,7 @@ export default function Footer() {
                     </div>
 
                     <div className="flex justify-center mt-[4vw]">
-                        <button onClick={scrollToTop} className="group flex flex-col items-center gap-[1vw] font-poppins text-[1.1vw] min-text-[14px] leading-[1.3] font-normal hover:text-[#F80000] transition-colors">
+                        <button onClick={scrollToTop} className="group cursor-pointer flex flex-col items-center gap-[1vw] font-poppins text-[1.1vw] min-text-[14px] leading-[1.3] font-normal hover:text-[#F80000] transition-colors">
                             <span className="uppercase tracking-widest flex items-center gap-[0.5vw]">
                                 <span>[</span>
                                 <ArrowUp className="w-[1.5vw] h-[1.5vw] min-w-[20px] min-h-[20px]" strokeWidth={2} />

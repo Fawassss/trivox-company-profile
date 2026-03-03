@@ -132,7 +132,7 @@ const Hero = () => {
                             initial={{ x: "100%", opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ duration: 1, delay: 0.2, ease: ease }}
-                            className="font-anton text-[24vw] sm:text-[23vw] md:text-[22vw] lg:text-[22vw] xl:text-[19vw] leading-[0.85] text-black uppercase tracking-[0.01em] whitespace-nowrap"
+                            className="font-anton text-[24vw] sm:text-[23vw] md:text-[22vw] lg:text-[22vw] xl:text-[19vw] leading-[0.90] text-black uppercase tracking-[0.01em] whitespace-nowrap"
                         >
                             <MagneticWrapper>
                                 <StaggeredRollingText text="DIGITAL" className="cursor-pointer transition-colors duration-300" />
@@ -148,7 +148,7 @@ const Hero = () => {
                             initial={{ x: "-100%", opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ duration: 1, delay: 0.4, ease: ease }}
-                            className="font-anton text-[24vw] sm:text-[23vw] md:text-[22vw] lg:text-[22vw] xl:text-[19vw] leading-[0.85] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
+                            className="font-anton text-[24vw] sm:text-[23vw] md:text-[22vw] lg:text-[22vw] xl:text-[19vw] leading-[0.90] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
                         >
                             <MagneticWrapper>
                                 <StaggeredRollingText text="ELEVATION" className="cursor-pointer transition-colors duration-300" />
@@ -183,13 +183,13 @@ const Hero = () => {
                 </div>
 
                 {/* Row 3: STUDIO + Description */}
-                <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between mt-0 md:mt-[2vw] gap-[2vw] lg:gap-[2vw]">
+                <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between mt-0 md:mt-[1.5vw] gap-[2vw] lg:gap-[2vw]">
                     <div className="order-2 lg:order-1">
                         <motion.h1
                             initial={{ x: "100%", opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ duration: 1, delay: 0.6, ease: ease }}
-                            className="font-anton text-[24vw] sm:text-[23vw] md:text-[22vw] lg:text-[22vw] xl:text-[19vw] leading-[0.85] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
+                            className="font-anton text-[24vw] sm:text-[23vw] md:text-[22vw] lg:text-[22vw] xl:text-[19vw] leading-[0.90] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
                         >
                             <MagneticWrapper>
                                 <StaggeredRollingText text="STUDIO" className="cursor-pointer transition-colors duration-300" />
@@ -203,7 +203,7 @@ const Hero = () => {
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
-                        className="order-1 lg:order-2 max-w-[80vw] lg:max-w-[35vw] lg:mb-[3.5vw] xl:mb-[3.5vw]"
+                        className="order-1 lg:order-2 max-w-[80vw] lg:max-w-[35vw] lg:mb-[3.5vw] xl:mb-[4.5vw]"
                     >
                         <div className="flex flex-wrap items-start justify-start gap-x-[0.35em] gap-y-0 text-left">
                             {words.map((word, idx) => (

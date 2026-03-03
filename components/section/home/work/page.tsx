@@ -62,7 +62,7 @@ export default function Work() {
                 </div>
 
                 {/* Button */}
-                <div className="flex justify-center mt-[6vw]">
+                <div className="flex justify-center mt-[6vw] mb-[10vh]">
                     <motion.div
                         initial={{ opacity: 0, y: "2vw" }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -71,6 +71,39 @@ export default function Work() {
                     >
                         <MagneticButton />
                     </motion.div>
+                </div>
+
+                {/* Our Services Header (Transitional) */}
+                <div className="mt-[15vh]">
+                    <div className="flex flex-col lg:flex-row justify-between items-baseline gap-[2vw]">
+                        <div className="overflow-hidden">
+                            <h2 className="font-anton text-[12vw] md:text-[10vw] lg:text-[9vw] leading-none uppercase select-none flex">
+                                {"OUR SERVICES".split("").map((char, i) => (
+                                    <motion.span
+                                        key={i}
+                                        initial={{ y: "100%", opacity: 0 }}
+                                        whileInView={{ y: 0, opacity: 1 }}
+                                        viewport={{ once: true }}
+                                        transition={{ duration: 0.45, delay: i * 0.02, ease: [0.22, 1, 0.36, 1] }}
+                                        className="inline-block"
+                                    >
+                                        {char === " " ? "\u00A0" : char}
+                                    </motion.span>
+                                ))}
+                            </h2>
+                        </div>
+                        <div className="overflow-hidden lg:mb-[1vw]">
+                            <motion.span
+                                initial={{ y: "100%", opacity: 0 }}
+                                whileInView={{ y: 0, opacity: 1 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.45, delay: 0.2, ease: [0.22, 1, 0.36, 1] }}
+                                className="font-poppins text-[4vw] md:text-[1.8vw] leading-none select-none inline-block border-b border-black pb-[0.3vw]"
+                            >
+                                What We Do
+                            </motion.span>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

@@ -1,7 +1,7 @@
 "use client";
 
-import { motion, Variants } from "framer-motion";
-import { useState } from "react";
+import { motion, useScroll, useTransform, useSpring } from "framer-motion";
+import { useRef } from "react";
 
 const services = [
     { id: "01", title: "BRAND IDENTITY" },
@@ -13,130 +13,101 @@ const services = [
 ];
 
 export default function Services() {
-    const ease: [number, number, number, number] = [0.22, 1, 0.36, 1];
-    // ini sedikit lebih responsive dari 0.33 curve kamu
-
-    const containerVariants: Variants = {
-        hidden: { opacity: 0 },
-        visible: {
-            opacity: 1,
-            transition: {
-                staggerChildren: 0.02,   // lebih cepat dari 0.05
-                delayChildren: 0.05      // lebih cepat dari 0.2
-            }
-        }
-    };
-
-    const textVariants: Variants = {
-        hidden: { y: "100%", opacity: 0 },
-        visible: {
-            y: 0,
-            opacity: 1,
-            transition: {
-                duration: 0.45,  // dari 0.8 → 0.45
-                ease: ease
-            }
-        }
-    };
+    const containerRef = useRef<HTMLDivElement>(null);
+    const { scrollYProgress } = useScroll({
+        target: containerRef,
+        offset: ["start start", "end end"]
+    });
 
     return (
-        <section id="services" className="bg-white text-black pt-[10vh] pb-[15vh] overflow-hidden w-full">
-            <div className="px-[4vw] md:px-[8vw] mb-[5vw]">
-                <div className="w-full">
-                    {/* Header */}
-                    <motion.div
-                        variants={containerVariants}
-                        initial="hidden"
-                        whileInView="visible"
-                        viewport={{ once: true }}
-                        className="flex flex-col lg:flex-row justify-between items-baseline gap-[2vw]"
-                    >
-                        <div className="overflow-hidden">
-                            <h2 className="font-anton text-[12vw] md:text-[10vw] lg:text-[9vw] leading-none uppercase select-none flex">
-                                {"OUR SERVICES".split("").map((char, i) => (
-                                    <motion.span
-                                        key={i}
-                                        variants={textVariants}
-                                        className="inline-block"
-                                    >
-                                        {char === " " ? "\u00A0" : char}
-                                    </motion.span>
-                                ))}
-                            </h2>
-                        </div>
-                        <div className="overflow-hidden lg:mb-[1vw]">
-                            <motion.span
-                                variants={textVariants}
-                                className="font-poppins text-[4vw] md:text-[1.8vw] leading-none select-none inline-block border-b border-black pb-[0.3vw]"
-                            >
-                                What We Do
-                            </motion.span>
-                        </div>
-                    </motion.div>
+        <section ref={containerRef} id="services" className="relative h-[400vh] bg-white text-black w-full">
+            <div className="sticky top-0 h-screen w-full flex flex-col overflow-hidden">
+                {/* Services List */}
+                <div className="flex flex-col w-full h-full border-t border-black/10">
+                    {services.map((service, index) => (
+                        <ServiceItem
+                            key={index}
+                            id={service.id}
+                            title={service.title}
+                            index={index}
+                            progress={scrollYProgress}
+                            total={services.length}
+                        />
+                    ))}
                 </div>
-            </div>
-
-            {/* Services List - Full Width */}
-            <div className="flex flex-col w-full border-t border-black/10">
-                {services.map((service, index) => (
-                    <ServiceItem
-                        key={index}
-                        id={service.id}
-                        title={service.title}
-                    />
-                ))}
             </div>
         </section>
     );
 }
 
-function ServiceItem({ id, title }: { id: string; title: string }) {
-    const [isHovered, setIsHovered] = useState(false);
+function ServiceItem({
+    id,
+    title,
+    index,
+    progress,
+    total
+}: {
+    id: string;
+    title: string;
+    index: number;
+    progress: any;
+    total: number
+}) {
     const text = `${id} - ${title}`;
-    const itemHeight = "7.5vw"; // Viewport-based height
+
+    // Define the range for this specific item
+    const rangeStep = 1 / total;
+    const start = index * rangeStep;
+    const end = (index + 1) * rangeStep;
+
+    // Multi-point transform to create an "active window"
+    const buffer = rangeStep * 0.15;
+
+    // Animates 0 -> 1 at start, stays at 1, returns 1 -> 0 at end
+    const activeState = useTransform(
+        progress,
+        [start, start + buffer, end - buffer, end],
+        [0, 1, 1, 0]
+    );
+
+    // Spring for smoother scroll reaction
+    const springActive = useSpring(activeState, { stiffness: 100, damping: 25, mass: 0.5 });
+
+    // Derived transforms based on springActive
+    const springOverlayX = useTransform(springActive, [0, 1], ["-100%", "0%"]);
+    const springTextY = useTransform(springActive, [0, 1], ["0%", "-100%"]);
+    const arrowOpacity = useTransform(springActive, [0, 1], [0, 1]);
+    const arrowScale = useTransform(springActive, [0, 1], [0.5, 1]);
+    const arrowX = useTransform(springActive, [0, 1], ["-2vw", "0vw"]);
 
     return (
-        <motion.div
-            onMouseEnter={() => setIsHovered(true)}
-            onMouseLeave={() => setIsHovered(false)}
-            className="group relative w-full h-[15vw] md:h-[7.5vw] flex items-center justify-end px-[4vw] md:px-[8vw] border-b border-black/10 last:border-b-0 cursor-pointer overflow-hidden transition-colors duration-300"
-        >
+        <div className="relative w-full h-[16.67vh] flex items-center justify-end px-[4vw] md:px-[8vw] border-b border-black/10 last:border-b-0 cursor-pointer overflow-hidden">
             {/* Background Color Transition Overlay */}
             <motion.div
-                initial={{ x: "-100%" }}
-                animate={{ x: isHovered ? "0%" : "-100%" }}
-                transition={{ duration: 0.4, ease: [0.33, 1, 0.68, 1] }}
+                style={{ x: springOverlayX }}
                 className="absolute inset-0 bg-[#F80000] z-0"
             />
 
-            <div className="relative z-10 flex items-center gap-[4vw] lg:gap-[6vw] select-none">
+            <div className="relative z-10 flex items-center gap-[4vw] lg:gap-[6vw] select-none text-right">
                 <div className="h-[10vw] md:h-[5vw] overflow-hidden flex flex-col items-end">
+                    {/* Layer 1: Black Text */}
                     <div className="flex">
                         {text.split("").map((char, i) => (
                             <motion.span
                                 key={i}
-                                animate={isHovered ? { y: "-100%" } : { y: 0 }}
-                                transition={{
-                                    duration: 0.5,
-                                    ease: [0.33, 1, 0.68, 1],
-                                    delay: i * 0.01
-                                }}
+                                style={{ y: springTextY }}
                                 className="font-anton text-[6vw] md:text-[4vw] lg:text-[3.5vw] leading-[1.2] uppercase text-black inline-block h-[10vw] md:h-[5vw] flex items-center"
                             >
                                 {char === " " ? "\u00A0" : char}
                             </motion.span>
                         ))}
                     </div>
+                    {/* Layer 2: White Text */}
                     <div className="flex">
                         {text.split("").map((char, i) => (
                             <motion.span
                                 key={i}
-                                animate={isHovered ? { y: "-100%" } : { y: 0 }}
-                                transition={{
-                                    duration: 0.5,
-                                    ease: [0.33, 1, 0.68, 1],
-                                    delay: i * 0.01
-                                }}
+                                style={{ y: springTextY }}
                                 className="font-anton text-[6vw] md:text-[4vw] lg:text-[3.5vw] leading-[1.2] uppercase text-white inline-block h-[10vw] md:h-[5vw] flex items-center"
                             >
                                 {char === " " ? "\u00A0" : char}
@@ -145,10 +116,9 @@ function ServiceItem({ id, title }: { id: string; title: string }) {
                     </div>
                 </div>
 
+                {/* Arrow Icon */}
                 <motion.div
-                    initial={{ opacity: 0, x: "-2vw", scale: 0.5 }}
-                    animate={isHovered ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: "-2vw", scale: 0.5 }}
-                    transition={{ duration: 0.3, ease: "easeOut" }}
+                    style={{ opacity: arrowOpacity, x: arrowX, scale: arrowScale }}
                     className="text-white"
                 >
                     <svg
@@ -165,6 +135,7 @@ function ServiceItem({ id, title }: { id: string; title: string }) {
                     </svg>
                 </motion.div>
             </div>
-        </motion.div>
+        </div>
     );
 }
+
