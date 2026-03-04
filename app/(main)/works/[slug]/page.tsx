@@ -58,16 +58,16 @@ export default function ProjectDetail() {
                         />
                         <div className="absolute inset-0 bg-black/40" />
 
-                        <div className="container mx-auto px-4 lg:px-[120px] pb-[80px] relative z-10">
+                        <div className="w-full px-[4vw] md:px-[8vw] pb-[8vh] relative z-10">
                             <motion.div
-                                initial={{ opacity: 0, y: 30 }}
+                                initial={{ opacity: 0, y: "2vw" }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.8, ease: "easeOut" }}
                             >
-                                <span className="font-poppins text-center text-white/80 text-[14px] md:text-[18px] uppercase tracking-[0.2em] mb-4 block">
+                                <span className="font-poppins text-center text-white/80 text-[3vw] md:text-[1.5vw] lg:text-[1.1vw] uppercase tracking-[0.2em] mb-[1vw] block">
                                     {project.category}
                                 </span>
-                                <h1 className="font-anton text-center text-white text-[80px] md:text-[120px] lg:text-[180px] leading-[0.9] uppercase">
+                                <h1 className="font-anton text-center text-white text-[12vw] md:text-[10vw] lg:text-[10vw] leading-[0.9] uppercase">
                                     {project.name}
                                 </h1>
                             </motion.div>
@@ -75,57 +75,57 @@ export default function ProjectDetail() {
                     </section>
 
                     {/* Content Section */}
-                    <section className="py-[100px] px-4 lg:px-[120px]">
-                        <div className="container mx-auto max-w-[1440px]">
-                            <div className="flex flex-col lg:flex-row gap-[60px] lg:gap-[120px]">
+                    <section className="py-[10vh] px-[4vw] md:px-[8vw]">
+                        <div className="w-full max-w-[100%]">
+                            <div className="flex flex-col lg:flex-row gap-[8vw] lg:gap-[10vw]">
 
                                 {/* Left Column: Metadata */}
                                 <div className="lg:w-1/3 flex flex-col justify-between">
                                     <motion.div
-                                        initial={{ opacity: 0, x: -20 }}
+                                        initial={{ opacity: 0, x: "-2vw" }}
                                         whileInView={{ opacity: 1, x: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.6 }}
-                                        className="flex flex-col gap-[40px]"
+                                        className="flex flex-col gap-[3vw]"
                                     >
                                         <div>
-                                            <p className="font-poppins text-[12px] uppercase opacity-40 mb-2">CLIENT</p>
-                                            <h3 className="font-anton text-[28px] uppercase">{project.client}</h3>
+                                            <p className="font-poppins text-[2vw] md:text-[1.2vw] lg:text-[0.8vw] uppercase opacity-40 mb-[0.5vw]">CLIENT</p>
+                                            <h3 className="font-anton text-[6vw] md:text-[3vw] lg:text-[2.2vw] uppercase">{project.client}</h3>
                                         </div>
                                         <div>
-                                            <p className="font-poppins text-[12px] uppercase opacity-40 mb-2">INDUSTRY</p>
-                                            <h3 className="font-anton text-[28px] uppercase">{project.industry}</h3>
+                                            <p className="font-poppins text-[2vw] md:text-[1.2vw] lg:text-[0.8vw] uppercase opacity-40 mb-[0.5vw]">INDUSTRY</p>
+                                            <h3 className="font-anton text-[6vw] md:text-[3vw] lg:text-[2.2vw] uppercase">{project.industry}</h3>
                                         </div>
                                         <div>
-                                            <p className="font-poppins text-[12px] uppercase opacity-40 mb-2">WEBSITE</p>
-                                            <Link href={project.websiteUrl} target="_blank" className="font-anton text-[28px] uppercase hover:opacity-60 transition-opacity">
+                                            <p className="font-poppins text-[2vw] md:text-[1.2vw] lg:text-[0.8vw] uppercase opacity-40 mb-[0.5vw]">WEBSITE</p>
+                                            <Link href={project.websiteUrl} target="_blank" className="font-anton text-[6vw] md:text-[3vw] lg:text-[2.2vw] uppercase hover:opacity-60 transition-opacity">
                                                 {project.website}
                                             </Link>
                                         </div>
                                         <div>
-                                            <p className="font-poppins text-[12px] uppercase opacity-40 mb-2">SERVICES</p>
-                                            <h3 className="font-anton text-[28px] uppercase">{project.services}</h3>
+                                            <p className="font-poppins text-[2vw] md:text-[1.2vw] lg:text-[0.8vw] uppercase opacity-40 mb-[0.5vw]">SERVICES</p>
+                                            <h3 className="font-anton text-[6vw] md:text-[3vw] lg:text-[2.2vw] uppercase">{project.services}</h3>
                                         </div>
                                         <div>
-                                            <p className="font-poppins text-[12px] uppercase opacity-40 mb-2">YEAR</p>
-                                            <h3 className="font-anton text-[28px] uppercase">{project.year}</h3>
+                                            <p className="font-poppins text-[2vw] md:text-[1.2vw] lg:text-[0.8vw] uppercase opacity-40 mb-[0.5vw]">YEAR</p>
+                                            <h3 className="font-anton text-[6vw] md:text-[3vw] lg:text-[2.2vw] uppercase">{project.year}</h3>
                                         </div>
                                     </motion.div>
 
                                     <motion.div
-                                        initial={{ opacity: 0, y: 20 }}
+                                        initial={{ opacity: 0, y: "2vw" }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.6, delay: 0.2 }}
-                                        className="mt-[80px] lg:mt-auto"
+                                        className="mt-[6vh] lg:mt-auto"
                                     >
                                         <Link
                                             href={project.websiteUrl}
                                             target="_blank"
-                                            className="inline-flex items-center gap-2 font-poppins text-[16px] font-medium hover:gap-4 transition-all"
+                                            className="inline-flex items-center gap-[0.5vw] font-poppins text-[3.5vw] md:text-[1.5vw] lg:text-[1.1vw] font-medium hover:gap-[1vw] transition-all"
                                         >
                                             Visit the Website
-                                            <svg width="15" height="15" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                            <svg className="w-[1.5vw] h-[1.5vw]" viewBox="0 0 15 15" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M1.2 13.8L13.8 1.2M13.8 1.2H4.8M13.8 1.2V10.2" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
                                         </Link>
@@ -135,27 +135,27 @@ export default function ProjectDetail() {
                                 {/* Right Column: Content */}
                                 <div className="lg:w-2/3">
                                     <motion.div
-                                        initial={{ opacity: 0, y: 30 }}
+                                        initial={{ opacity: 0, y: "3vw" }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.8 }}
                                     >
-                                        <h2 className="font-anton text-[60px] md:text-[80px] uppercase mb-[20px] leading-tight">OVERVIEW</h2>
-                                        <div className="font-poppins text-[16px] md:text-[18px] leading-[1.6] opacity-80 whitespace-pre-line max-w-[800px]">
+                                        <h2 className="font-anton text-[10vw] md:text-[6vw] lg:text-[5vw] uppercase mb-[1.5vw] leading-tight">OVERVIEW</h2>
+                                        <div className="font-poppins text-[4vw] md:text-[1.8vw] lg:text-[1.2vw] leading-[1.6] opacity-80 whitespace-pre-line max-w-[50vw]">
                                             {project.overview}
                                         </div>
                                     </motion.div>
 
                                     <motion.div
-                                        initial={{ opacity: 0, y: 30 }}
+                                        initial={{ opacity: 0, y: "3vw" }}
                                         whileInView={{ opacity: 1, y: 0 }}
                                         viewport={{ once: true }}
                                         transition={{ duration: 0.8, delay: 0.2 }}
-                                        className="mt-[40px]"
+                                        className="mt-[6vh]"
                                     >
-                                        <h2 className="font-anton text-[60px] md:text-[80px] uppercase mb-[20px] leading-tight">WORK</h2>
+                                        <h2 className="font-anton text-[10vw] md:text-[6vw] lg:text-[5vw] uppercase mb-[1.5vw] leading-tight">WORK</h2>
 
-                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                        <div className="grid grid-cols-1 md:grid-cols-2 gap-[1vw]">
                                             {project.workImages.map((img, idx) => (
                                                 <div key={idx} className={`relative aspect-[4/3] overflow-hidden rounded-sm ${idx === 0 ? 'md:col-span-2 aspect-[16/9]' : ''}`}>
                                                     <Image
