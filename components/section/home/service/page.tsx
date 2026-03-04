@@ -11,6 +11,7 @@ const services = [
     { id: "04", title: "MOBILE APPS DEVELOPMENT", image: "/images/service4.JPG" },
     { id: "05", title: "UI/UX DESIGN", image: "/images/service5.JPG" },
     { id: "06", title: "DIGITAL EXPERIENCE & INTERACTION", image: "/images/service6.JPG" },
+    { id: "07", title: "GAME DEVELOPMENT", image: "/images/service6.JPG" },
 ];
 
 export default function Services() {
@@ -63,7 +64,7 @@ export default function Services() {
     };
 
     return (
-        <section id="services" ref={containerRef} className="relative h-[400vh] bg-white text-black font-poppins selection:bg-black selection:text-white">
+        <section id="services" ref={containerRef} className="relative h-[40vh] bg-white text-black font-poppins selection:bg-black selection:text-white">
             <div className="sticky top-0 h-screen w-full flex flex-col overflow-hidden">
                 <div className="px-[4vw] md:px-[8vw] py-[10vh]">
                     <div className="w-full">
@@ -188,6 +189,7 @@ function ServiceItem({ id, title, progress, index, total }: { id: string; title:
                             </motion.span>
                         ))}
                     </div>
+                    {/* Layer 2: White Text */}
                     <div className="flex">
                         {text.split("").map((char, i) => (
                             <motion.span
@@ -206,6 +208,7 @@ function ServiceItem({ id, title, progress, index, total }: { id: string; title:
                     </div>
                 </div>
 
+                {/* Arrow Icon */}
                 <motion.div
                     initial={{ opacity: 0, x: "-2vw", scale: 0.5 }}
                     animate={active ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: "-2vw", scale: 0.5 }}
@@ -229,3 +232,4 @@ function ServiceItem({ id, title, progress, index, total }: { id: string; title:
         </div>
     );
 }
+
