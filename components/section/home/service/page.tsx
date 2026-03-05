@@ -64,10 +64,12 @@ export default function Services() {
     };
 
     return (
-        <section id="services" ref={containerRef} className="relative h-[40vh] bg-white text-black font-poppins selection:bg-black selection:text-white">
+        <section id="services" ref={containerRef} className="relative h-[500vh] bg-white text-black font-poppins selection:bg-black selection:text-white">
+
             <div className="sticky top-0 h-screen w-full flex flex-col overflow-hidden">
-                <div className="px-[4vw] md:px-[8vw] py-[10vh]">
+                <div className="px-[4vw] md:px-[8vw] py-[5vh]">
                     <div className="w-full">
+
                         {/* Header */}
                         <motion.div
                             variants={containerVariants}
@@ -124,7 +126,8 @@ export default function Services() {
                     </div>
 
                     {/* Services List - Full Width Rows */}
-                    <div className="mt-auto flex flex-col w-full border-t border-black/10 pb-[5vh]">
+                    <div className="mt-auto flex flex-col w-full border-t border-black/10 pb-[2vh]">
+
                         {services.map((service, index) => (
                             <ServiceItem
                                 key={index}
@@ -161,8 +164,9 @@ function ServiceItem({ id, title, progress, index, total }: { id: string; title:
 
     return (
         <div
-            className="group relative w-full h-[12vw] md:h-[8vw] lg:h-[6vw] flex items-center justify-end px-[4vw] md:px-[8vw] lg:pl-[45vw] border-b border-black/10 last:border-b-0 cursor-pointer overflow-hidden"
+            className="group relative w-full h-[12vw] md:h-[8vw] lg:h-[5.2vw] flex items-center justify-end px-[4vw] md:px-[8vw] lg:pl-[45vw] border-b border-black/10 last:border-b-0 cursor-pointer overflow-hidden"
         >
+
             {/* Background Color Transition Overlay */}
             <motion.div
                 initial={{ x: "-100%" }}
