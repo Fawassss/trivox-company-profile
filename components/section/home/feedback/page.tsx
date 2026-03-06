@@ -141,8 +141,8 @@ export default function ClientFeedback() {
                 </div>
             </div>
 
-            {/* Scrolling Cards Container - Edge to Edge */}
-            <div className="absolute top-0 left-0 w-full h-full z-10 pointer-events-none">
+            {/* Scrolling Cards Container - Desktop Only */}
+            <div className="hidden lg:block absolute top-0 left-0 w-full h-full z-10 pointer-events-none">
                 <div className="relative w-full h-full">
                     {feedbackData.map((card) => (
                         <FeedbackCard key={card.id} {...card} />
