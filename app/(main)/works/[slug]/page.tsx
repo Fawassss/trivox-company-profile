@@ -10,35 +10,23 @@ import SmoothScroll from "@/components/providers/SmoothScroll";
 import { useEffect } from "react";
 import { useLenis } from "lenis/react";
 
-// Mock data for the project detail page
-const projectData = {
-    slug: "ozil-noblas",
-    name: "OZIL NOBLAS",
-    category: "E-COMMERCE",
-    heroImage: "/images/project3.png", // Using existing mock images
-    client: "Ozil Noblas",
-    industry: "Apparel",
-    website: "ozil-noblas.trivox.id",
-    websiteUrl: "https://ozil-noblas.trivox.id",
-    services: "website development",
-    year: "2026",
-    overview: "Ozil Noblas is a custom apparel printing company specializing in personalized clothing and merchandise. To strengthen their digital presence and reach a wider market, they partnered with us to develop a data-driven and engaging digital campaign. The objective was to increase brand awareness, generate leads, promote their custom products, and boost social media engagement through a strategic digital approach tailored to their target audience.\n\nThe campaign delivered strong results, achieving an 82% increase in engagement. Through creative storytelling, visually compelling content, and precise audience targeting, Ozil Noblas experienced a significant improvement in online visibility and customer interaction, reinforcing their brand presence in the custom apparel market.",
-    workImages: [
-        "/images/project1.png",
-        "/images/project2.png",
-        "/images/project3.png",
-        "/images/project1.png",
-        "/images/project2.png"
-    ]
-};
+import { projects } from "@/constants/projects";
 
 export default function ProjectDetail() {
     const params = useParams();
     const slug = params.slug;
 
-    // In a real app, you would fetch data based on the slug
-    // For now, we use the mock data
-    const project = projectData;
+    // Find project based on slug
+    const project = projects.find((p) => p.slug === slug);
+
+    // If project not found, you might want to show a 404 or redirect
+    if (!project) {
+        return (
+            <div className="h-screen flex items-center justify-center">
+                <h1 className="text-2xl">Project not found</h1>
+            </div>
+        );
+    }
 
     return (
         <SmoothScroll>

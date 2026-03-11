@@ -7,6 +7,7 @@ import Services from "@/components/section/home/service/page";
 import Work from "@/components/section/home/work/page";
 import Feedback from "@/components/section/home/feedback/page";
 import Footer from "@/components/ui/Footer";
+import CTA from "@/components/section/home/cta/page";
 
 export default function Home() {
   return (
@@ -21,6 +22,7 @@ export default function Home() {
           <Work />
           <Services />
           <Feedback />
+          <CTA />
         </main>
         <Footer />
       </div>
