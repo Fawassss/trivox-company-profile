@@ -126,7 +126,7 @@ export default function CTA() {
                     {/* Circle Text */}
                     <motion.span
                         style={{ opacity: circleTextOpacity }}
-                        className="font-poppins font-bold text-[10vw] md:text-[4vw] lg:text-[3vw] text-white uppercase tracking-[0.4em] whitespace-nowrap"
+                        className="font-poppins font-bold text-[12vw] md:text-[6vw] lg:text-[5vw] text-white uppercase tracking-[0.4em] whitespace-nowrap"
                     >
                         KEEP SCROLL
                     </motion.span>
@@ -154,35 +154,52 @@ export default function CTA() {
 
                     {/* Middle Section: Main CTA */}
                     <div className="flex flex-col items-center justify-center text-center flex-grow">
-                        <h2 className="font-anton text-[18vw] md:text-[12vw] lg:text-[11vw] xl:text-[10vw] leading-[0.8] text-white uppercase tracking-[-0.03em] mt-[10vh] mb-[12vh]">
+                        <h2 className="font-anton text-[18vw] md:text-[12vw] lg:text-[11vw] xl:text-[10vw] leading-[0.95] text-white uppercase tracking-[-0.03em] mt-[10vh] mb-[12vh]">
                             LET'S ELEVATE <br className="hidden md:block" /> YOUR BRAND
                         </h2>
 
                         <div className="relative pointer-events-auto">
                             <MagneticWrapper>
-                                <Link href="mailto:hello@trivox.studio" className="group relative flex items-center gap-[2vw]">
-                                    {/* The Pill Background */}
-                                    <motion.div
-                                        className="absolute left-0 h-full bg-white rounded-full z-0"
-                                        initial={{ width: "12vw" }}
-                                        whileHover={{ width: "100%" }}
-                                        transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-                                        style={{
-                                            width: "var(--pill-width)",
-                                            height: "var(--pill-height)"
-                                        }}
-                                    />
+                                    <Link href="mailto:hello@trivox.studio">
+                                        <motion.div 
+                                            initial="initial"
+                                            whileHover="hover"
+                                            className="group relative flex items-center gap-[2vw]"
+                                        >
+                                            {/* The Pill Background */}
+                                            <motion.div
+                                                className="absolute left-0 h-full bg-white rounded-full z-0"
+                                                variants={{
+                                                    initial: { width: "var(--pill-height)" },
+                                                    hover: { width: "100%" }
+                                                }}
+                                                transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+                                            />
 
-                                    {/* Icon Circle */}
-                                    <div className="relative z-10 w-[12vw] h-[12vw] md:w-[4.5vw] md:h-[4.5vw] bg-white rounded-full flex items-center justify-center transition-transform duration-500 group-hover:rotate-45">
-                                        <ArrowUpRight className="w-[6vw] h-[6vw] md:w-[2.2vw] md:h-[2.2vw] text-black" strokeWidth={1.5} />
-                                    </div>
+                                            {/* Icon Circle */}
+                                            <motion.div 
+                                                className="relative z-10 w-[12vw] h-[12vw] md:w-[4.5vw] md:h-[4.5vw] rounded-full flex items-center justify-center transition-transform duration-500"
+                                                variants={{
+                                                    initial: { rotate: 0 },
+                                                    hover: { rotate: 45 }
+                                                }}
+                                            >
+                                                <ArrowUpRight className="w-[6vw] h-[6vw] md:w-[2.2vw] md:h-[2.2vw] text-black" strokeWidth={1.5} />
+                                            </motion.div>
 
-                                    {/* Text */}
-                                    <span className="relative z-10 font-poppins font-bold text-[4.5vw] md:text-[1.8vw] lg:text-[1.5vw] text-white group-hover:text-black transition-colors duration-500 uppercase tracking-widest px-[2vw]">
-                                        hello@trivox.studio
-                                    </span>
-                                </Link>
+                                            {/* Text */}
+                                            <motion.span 
+                                                className="relative z-10 font-poppins font-bold text-[4.5vw] md:text-[1.8vw] lg:text-[1.5vw] uppercase tracking-widest px-[2vw]"
+                                                variants={{
+                                                    initial: { color: "#FFFFFF" },
+                                                    hover: { color: "#000000" }
+                                                }}
+                                                transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+                                            >
+                                                hello@trivox.studio
+                                            </motion.span>
+                                        </motion.div>
+                                    </Link>
                             </MagneticWrapper>
 
                             <style jsx>{`
@@ -228,9 +245,9 @@ export default function CTA() {
                             <span className="font-poppins text-white/40 text-[10px] md:text-[0.7vw] uppercase tracking-[0.3em]">Office</span>
                             <p className="font-poppins text-white/60 text-[12px] md:text-[0.9vw] leading-relaxed uppercase">
                                 Trivox Studio <br />
-                                Jakarta, Indonesia
+                                Malang, Indonesia
                             </p>
-                            <p className="font-poppins text-white/30 text-[9px] md:text-[0.6vw] mt-2 uppercase">© 2024 All Rights Reserved</p>
+                            <p className="font-poppins text-white/30 text-[9px] md:text-[0.6vw] mt-2 uppercase">© {new Date().getFullYear()} All Rights Reserved</p>
                         </div>
                     </div>
                 </motion.div>
