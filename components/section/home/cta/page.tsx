@@ -126,7 +126,7 @@ export default function CTA() {
                     {/* Circle Text */}
                     <motion.span
                         style={{ opacity: circleTextOpacity }}
-                        className="font-poppins font-bold text-[12vw] md:text-[6vw] lg:text-[5vw] text-white uppercase tracking-[0.4em] whitespace-nowrap"
+                        className="font-poppins font-bold text-[6vw] md:text-[6vw] lg:text-[5vw] text-white uppercase tracking-[0.4em] whitespace-nowrap"
                     >
                         KEEP SCROLL
                     </motion.span>
@@ -160,46 +160,46 @@ export default function CTA() {
 
                         <div className="relative pointer-events-auto">
                             <MagneticWrapper>
-                                    <Link href="mailto:hello@trivox.studio">
-                                        <motion.div 
-                                            initial="initial"
-                                            whileHover="hover"
-                                            className="group relative flex items-center gap-[2vw]"
+                                <Link href="mailto:hello@trivox.studio">
+                                    <motion.div
+                                        initial="initial"
+                                        whileHover="hover"
+                                        className="group relative flex items-center gap-[2vw]"
+                                    >
+                                        {/* The Pill Background */}
+                                        <motion.div
+                                            className="absolute left-0 h-full bg-white rounded-full z-0"
+                                            variants={{
+                                                initial: { width: "var(--pill-height)" },
+                                                hover: { width: "100%" }
+                                            }}
+                                            transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+                                        />
+
+                                        {/* Icon Circle */}
+                                        <motion.div
+                                            className="relative z-10 w-[12vw] h-[12vw] md:w-[4.5vw] md:h-[4.5vw] rounded-full flex items-center justify-center transition-transform duration-500"
+                                            variants={{
+                                                initial: { rotate: 0 },
+                                                hover: { rotate: 45 }
+                                            }}
                                         >
-                                            {/* The Pill Background */}
-                                            <motion.div
-                                                className="absolute left-0 h-full bg-white rounded-full z-0"
-                                                variants={{
-                                                    initial: { width: "var(--pill-height)" },
-                                                    hover: { width: "100%" }
-                                                }}
-                                                transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-                                            />
-
-                                            {/* Icon Circle */}
-                                            <motion.div 
-                                                className="relative z-10 w-[12vw] h-[12vw] md:w-[4.5vw] md:h-[4.5vw] rounded-full flex items-center justify-center transition-transform duration-500"
-                                                variants={{
-                                                    initial: { rotate: 0 },
-                                                    hover: { rotate: 45 }
-                                                }}
-                                            >
-                                                <ArrowUpRight className="w-[6vw] h-[6vw] md:w-[2.2vw] md:h-[2.2vw] text-black" strokeWidth={1.5} />
-                                            </motion.div>
-
-                                            {/* Text */}
-                                            <motion.span 
-                                                className="relative z-10 font-poppins font-bold text-[4.5vw] md:text-[1.8vw] lg:text-[1.5vw] uppercase tracking-widest px-[2vw]"
-                                                variants={{
-                                                    initial: { color: "#FFFFFF" },
-                                                    hover: { color: "#000000" }
-                                                }}
-                                                transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
-                                            >
-                                                hello@trivox.studio
-                                            </motion.span>
+                                            <ArrowUpRight className="w-[6vw] h-[6vw] md:w-[2.2vw] md:h-[2.2vw] text-black" strokeWidth={1.5} />
                                         </motion.div>
-                                    </Link>
+
+                                        {/* Text */}
+                                        <motion.span
+                                            className="relative z-10 font-poppins font-bold text-[4.5vw] md:text-[1.8vw] lg:text-[1.5vw] uppercase tracking-widest px-[2vw]"
+                                            variants={{
+                                                initial: { color: "#FFFFFF" },
+                                                hover: { color: "#000000" }
+                                            }}
+                                            transition={{ duration: 0.5, ease: [0.33, 1, 0.68, 1] }}
+                                        >
+                                            hello@trivox.studio
+                                        </motion.span>
+                                    </motion.div>
+                                </Link>
                             </MagneticWrapper>
 
                             <style jsx>{`
@@ -218,7 +218,7 @@ export default function CTA() {
                     </div>
 
                     {/* Bottom Section: Footer Info */}
-                    <div className="mt-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-end border-t border-white/10 pt-10">
+                    <div className="mt-auto grid grid-cols-1 md:grid-cols-3 gap-10 items-end border-t border-white/10 pb-10">
                         {/* Column 1: Services */}
                         <div className="hidden md:flex flex-col gap-4">
                             <span className="font-poppins text-white/40 text-[10px] md:text-[0.7vw] uppercase tracking-[0.3em]">Expertise</span>

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono, Poppins, Anton } from "next/font/google";
 import "./globals.css";
+import Preloader from "@/components/ui/Preloader";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -40,10 +41,9 @@ export default function RootLayout({
       suppressHydrationWarning
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} ${anton.variable} antialiased`}
       >
+        <Preloader />
         {children}
       </body>
     </html>
   );
 }
-
-

@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { motion, useScroll, useTransform, Variants } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 
 const textVariants: Variants = {
     hidden: { y: "100%" },
@@ -24,7 +24,7 @@ const containerVariants: Variants = {
     },
 };
 
-const AnimatedText = ({ text, progress }: { text: string; progress: any }) => {
+const AnimatedText = ({ text, progress, isMobile }: { text: string; progress: any; isMobile: boolean }) => {
     const words = text.split(" ");
 
     return (
@@ -52,15 +52,34 @@ const AnimatedText = ({ text, progress }: { text: string; progress: any }) => {
 };
 
 export default function AboutUs() {
+    const [isMobile, setIsMobile] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollYProgress } = useScroll({
+
+    const desktopScroll = useScroll({
         target: containerRef,
         offset: ["start start", "end end"],
     });
 
+    // Mobile scroll tracks the container as it moves through the viewport
+    const mobileScroll = useScroll({
+        target: containerRef,
+        offset: ["start 90%", "start 10%"],
+    });
+
+    useEffect(() => {
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
+        return () => window.removeEventListener("resize", checkMobile);
+    }, []);
+
+    const scrollYProgress = isMobile ? mobileScroll.scrollYProgress : desktopScroll.scrollYProgress;
+
     return (
-        <section id="about-us" ref={containerRef} className="relative h-[300vh] bg-white text-black font-poppins selection:bg-black selection:text-white">
-            <div className="sticky top-0 h-screen w-full flex flex-col overflow-hidden">
+        <section id="about-us" ref={containerRef} className="relative h-fit md:h-[300vh] bg-white text-black font-poppins selection:bg-black selection:text-white">
+            <div className="md:sticky md:top-0 h-auto md:h-screen w-full flex flex-col overflow-hidden py-[40vw] md:py-0">
 
                 {/* Content Section */}
                 <div className="flex-grow flex flex-col justify-center px-[4vw] md:px-[8vw]">
@@ -71,16 +90,17 @@ export default function AboutUs() {
                             alt="star"
                             width={20}
                             height={20}
-                            className="w-[1.5vw] h-[1.5vw]"
+                            className="w-[1.5vw] h-[1.5vw] md:block hidden"
                         />
-                        <span className="text-[2vw] md:text-[1.5vw] font-normal uppercase tracking-wider">About us</span>
+                        <span className="text-[4vw] md:text-[1.5vw] font-normal uppercase tracking-wider">About us</span>
                     </div>
 
                     {/* Main Text with Scroll Animation */}
                     <div className="w-full max-w-[100%]">
-                        <h2 className="text-[5vw] md:text-[4vw] lg:text-[3.2vw] font-normal leading-[1.2]">
+                        <h2 className="text-[4vw] md:text-[4vw] lg:text-[3.2vw] font-normal leading-[1.2]">
                             <AnimatedText
                                 progress={scrollYProgress}
+                                isMobile={isMobile}
                                 text="We came together with a shared vision to build inspiring brands and impactful designs. From a small team of passionate creatives, we’ve grown into a creative studio dedicated to transforming ideas into meaningful, lasting digital experiences."
                             />
                         </h2>
@@ -92,14 +112,14 @@ export default function AboutUs() {
                         initial="hidden"
                         whileInView="visible"
                         viewport={{ once: true, margin: "-100px" }}
-                        className="mt-[5vh] lg:mt-[10vh] flex flex-col-reverse lg:flex-row justify-between items-start lg:items-end gap-[4vw]"
+                        className="mt-[5vh] lg:mt-[10vh] flex flex-row justify-between items-end gap-[4vw] w-full"
                     >
                         {/* Left Text */}
-                        <div className="max-w-[20vw]">
+                        <div className="flex-1 pb-[1vw] md:pb-[1.5vw]">
                             <div className="overflow-hidden">
                                 <motion.p
                                     variants={textVariants}
-                                    className="text-[1.2vw] font-normal leading-tight cursor-default"
+                                    className="text-[3.5vw] md:text-[2vw] lg:text-[1.2vw] font-normal leading-tight cursor-default whitespace-nowrap"
                                 >
                                     we came to
                                 </motion.p>
@@ -107,7 +127,7 @@ export default function AboutUs() {
                             <div className="overflow-hidden">
                                 <motion.p
                                     variants={textVariants}
-                                    className="text-[1.2vw] font-normal leading-tight cursor-default"
+                                    className="text-[3.5vw] md:text-[2vw] lg:text-[1.2vw] font-normal leading-tight cursor-default whitespace-nowrap"
                                 >
                                     change the world
                                 </motion.p>
@@ -115,7 +135,7 @@ export default function AboutUs() {
                         </div>
 
                         {/* Right Text */}
-                        <div className="flex flex-col items-end">
+                        <div className="flex flex-col items-end shrink-0">
                             {[
                                 "A CREATIVE HUB FOR",
                                 "TODAY'S VISIONARIES"
@@ -130,7 +150,7 @@ export default function AboutUs() {
                             ) : (
                                 <div key={idx} className="overflow-hidden">
                                     <section className="flex flex-col lg:flex-row items-center gap-[2vw]">
-                                  
+
                                         <motion.h3
                                             variants={textVariants}
                                             className="font-anton text-[7vw] md:text-[6vw] lg:text-[6.5vw] leading-[1.1] text-right uppercase"
@@ -139,7 +159,7 @@ export default function AboutUs() {
                                         </motion.h3>
                                     </section>
                                 </div>
-                            )))}    
+                            )))}
                         </div>
                     </motion.div>
                 </div>

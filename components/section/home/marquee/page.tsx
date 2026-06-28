@@ -12,7 +12,7 @@ const marqueeItems = [
 
 const MarqueeSection = () => {
     return (
-        <div className="bg-[#010101] py-[1.5vw] overflow-hidden flex items-center h-[10vw] w-full shrink-0 z-10 relative">
+        <div className="bg-[#010101] py-[15vw] lg:py-[1.5vw] md:mt-0 lg:mt-[10vh] overflow-hidden flex items-center h-[10vw] w-full shrink-0 z-10 relative">
             <motion.div
                 className="flex whitespace-nowrap items-center shrink-0"
                 animate={{ x: [0, "-50%"] }}
@@ -27,7 +27,7 @@ const MarqueeSection = () => {
                     <div key={i} className="flex items-center shrink-0">
                         {marqueeItems.map((text, idx) => (
                             <div key={idx} className="flex items-center shrink-0">
-                                <span className="font-anton text-[5vw] lg:text-[5vw] font-normal text-white uppercase leading-none px-[4vw]">
+                                <span className="font-anton text-[10vw] lg:text-[5vw] font-normal text-white uppercase leading-none px-[4vw]">
                                     {text}
                                 </span>
                                 <div className="flex items-center justify-center shrink-0">
@@ -36,7 +36,7 @@ const MarqueeSection = () => {
                                         alt="star"
                                         width={64}
                                         height={64}
-                                        className="w-[4vw] h-[4vw] lg:w-[4.5vw] lg:h-[4.5vw] block translate-y-[-0.2vw] lg:translate-y-[-0.3vw]"
+                                        className="w-[5vw] h-[5vw] lg:w-[4.5vw] lg:h-[4.5vw] block translate-y-[-0.2vw] lg:translate-y-[-0.3vw]"
                                     />
                                 </div>
                             </div>

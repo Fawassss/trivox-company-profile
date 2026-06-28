@@ -23,6 +23,8 @@ const Navbar = () => {
         { name: "LINKEDIN", href: "https://linkedin.com" },
     ];
 
+    const [isMobile, setIsMobile] = useState(false);
+
     useEffect(() => {
         const handleScroll = () => {
             if (window.scrollY > 80) {
@@ -32,8 +34,19 @@ const Navbar = () => {
             }
         };
 
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+
+        handleScroll();
+        handleResize();
+
         window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
+        window.addEventListener("resize", handleResize);
+        return () => {
+            window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("resize", handleResize);
+        };
     }, []);
 
     // Menu animation variants
@@ -79,7 +92,7 @@ const Navbar = () => {
                 transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] as any }}
                 className={`fixed top-0 left-0 right-0 z-40 flex justify-center bg-transparent mix-blend-difference ${isScrolled ? "pointer-events-none" : "pointer-events-auto"}`}
             >
-                <div className="w-full max-w-[90vw] h-fit md:h-[13.5vw] flex items-start justify-between px-[2vw] md:px-[4vw] pt-[1.6vw] pb-[2.7vw] md:pb-[1.6vw] relative">
+                <div className="w-full max-w-[90vw] h-fit md:h-[13.5vw] flex items-start justify-between px-[2vw] md:px-[4vw] pt-[1.6vw] pb-[2.7vw] md:pb-[1.6vw] relative md:block hidden">
                     <div className="flex-1">
                         <Link href="/" className="inline-block">
                             <h1 className="font-poppins font-bold text-[1.4vw] md:text-[1.6vw] leading-[1.1] text-white uppercase">
@@ -126,19 +139,19 @@ const Navbar = () => {
                     whileHover={{ scale: 1.1 }}
                     whileTap={{ scale: 0.9 }}
                     onClick={() => setIsOpen(!isOpen)}
-                    className={`w-[4.5vw] h-[4.5vw] min-w-[50px] min-h-[50px] rounded-[1.2vw] md:rounded-[1.5vw] flex flex-col items-center justify-center gap-[0.4vw] transition-colors overflow-hidden group shadow-xl ${isOpen ? "bg-transparent border border-black/10" : "bg-white"}`}
+                    className={`w-[4.5vw] h-[4.5vw] min-w-[50px] min-h-[50px] rounded-[1.2vw] md:rounded-[1.5vw] flex flex-col items-center justify-center gap-[5px] md:gap-[0.4vw] transition-colors overflow-hidden group shadow-xl ${isOpen ? "bg-transparent border border-black/10" : "bg-white"}`}
                 >
                     <motion.div
-                        animate={isOpen ? { rotate: 45, y: "0.5vw", backgroundColor: "#000000" } : { rotate: 0, y: 0, backgroundColor: "#000000" }}
-                        className="w-[2vw] md:w-[2.5vw] h-[0.15vw] rounded-full transition-all"
+                        animate={isOpen ? { rotate: 45, y: isMobile ? 7 : "0.5vw", backgroundColor: "#000000" } : { rotate: 0, y: 0, backgroundColor: "#000000" }}
+                        className="w-[24px] md:w-[2.5vw] h-[2px] md:h-[0.15vw] rounded-full transition-all"
                     />
                     <motion.div
-                        animate={isOpen ? { opacity: 0, x: "1.5vw", backgroundColor: "#000000" } : { opacity: 1, x: 0, backgroundColor: "#000000" }}
-                        className="w-[2vw] md:w-[2.5vw] h-[0.15vw] rounded-full transition-all"
+                        animate={isOpen ? { opacity: 0, x: isMobile ? 20 : "1.5vw", backgroundColor: "#000000" } : { opacity: 1, x: 0, backgroundColor: "#000000" }}
+                        className="w-[24px] md:w-[2.5vw] h-[2px] md:h-[0.15vw] rounded-full transition-all"
                     />
                     <motion.div
-                        animate={isOpen ? { rotate: -45, y: "-0.5vw", backgroundColor: "#000000" } : { rotate: 0, y: 0, backgroundColor: "#000000" }}
-                        className="w-[2vw] md:w-[2.5vw] h-[0.15vw] rounded-full transition-all"
+                        animate={isOpen ? { rotate: -45, y: isMobile ? -7 : "-0.5vw", backgroundColor: "#000000" } : { rotate: 0, y: 0, backgroundColor: "#000000" }}
+                        className="w-[24px] md:w-[2.5vw] h-[2px] md:h-[0.15vw] rounded-full transition-all"
                     />
                 </motion.button>
             </motion.div>
