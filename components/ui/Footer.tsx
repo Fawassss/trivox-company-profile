@@ -30,8 +30,16 @@ export default function Footer() {
     const engineRef = useRef<Matter.Engine>(null);
     const [isLoaded, setIsLoaded] = useState(false);
 
+    const [isMobile, setIsMobile] = useState(false);
+
     useEffect(() => {
         if (!sceneRef.current) return;
+
+        const checkMobile = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        checkMobile();
+        window.addEventListener("resize", checkMobile);
 
         const { Engine, World, Bodies, Runner, Mouse, MouseConstraint } = Matter;
         const engine = Engine.create();
@@ -40,8 +48,9 @@ export default function Footer() {
 
         const container = sceneRef.current;
         const width = container.clientWidth || window.innerWidth;
-        const height = 650;
-        const footerOverlap = 120;
+        const mobile = window.innerWidth < 768;
+        const height = mobile ? 550 : 650;
+        const footerOverlap = mobile ? 80 : 120;
         const groundY = height - footerOverlap + 10;
         const wallThickness = 1000;
 
@@ -53,26 +62,29 @@ export default function Footer() {
 
         // Create bodies
         const stickerBodies = stickerData.map((data, i) => {
+            const w = mobile ? data.width * 0.5 : data.width;
+            const h = mobile ? data.height * 0.5 : data.height;
             return Bodies.rectangle(
-                Math.random() * (width - 200) + 100,
-                Math.random() * -600 - 50,
-                data.width,
-                data.height,
+                Math.random() * (width - 100) + 50,
+                Math.random() * -1000 - 100,
+                w,
+                h,
                 {
-                    chamfer: { radius: 32.5 },
+                    chamfer: { radius: mobile ? 16 : 32.5 },
                     restitution: 0.5,
                     friction: 0.2,
                     frictionAir: 0.01,
-                    angle: (Math.random() - 0.5) * 1,
+                    angle: (Math.random() - 0.5) * 2,
                 }
             );
         });
 
         const circleBodies = circleData.map((data, i) => {
+            const s = mobile ? data.size * 0.5 : data.size;
             return Bodies.circle(
-                Math.random() * (width - 200) + 100,
-                Math.random() * -600 - 50,
-                data.size / 2,
+                Math.random() * (width - 100) + 50,
+                Math.random() * -1000 - 100,
+                s / 2,
                 {
                     restitution: 0.5,
                     friction: 0.2,
@@ -100,8 +112,12 @@ export default function Footer() {
             allBodies.forEach((body, i) => {
                 const el = itemsRef.current[i];
                 if (el) {
-                    const w = i < stickerData.length ? stickerData[i].width : circleData[i - stickerData.length].size;
-                    const h = i < stickerData.length ? stickerData[i].height : circleData[i - stickerData.length].size;
+                    const w = i < stickerData.length
+                        ? (mobile ? stickerData[i].width * 0.5 : stickerData[i].width)
+                        : (mobile ? circleData[i - stickerData.length].size * 0.5 : circleData[i - stickerData.length].size);
+                    const h = i < stickerData.length
+                        ? (mobile ? stickerData[i].height * 0.5 : stickerData[i].height)
+                        : (mobile ? circleData[i - stickerData.length].size * 0.5 : circleData[i - stickerData.length].size);
                     el.style.transform = `translate(${body.position.x - w / 2}px, ${body.position.y - h / 2}px) rotate(${body.angle}rad)`;
                     el.style.visibility = "visible";
                     el.style.opacity = "1";
@@ -139,7 +155,7 @@ export default function Footer() {
         <footer className="relative w-full overflow-hidden bg-white">
             <div
                 ref={sceneRef}
-                className="relative w-full h-[650px] mb-[-120px] z-10 select-none overflow-hidden"
+                className="relative w-full h-[550px] md:h-[650px] mb-[-80px] md:mb-[-120px] z-10 select-none overflow-hidden"
             >
                 {stickerData.map((sticker, i) => (
                     <div
@@ -148,8 +164,8 @@ export default function Footer() {
                         className={`absolute flex items-center justify-center rounded-full border border-black shadow-lg cursor-grab active:cursor-grabbing will-change-transform ${sticker.color === "black" ? "bg-black text-white" : "bg-white text-black"
                             }`}
                         style={{
-                            width: sticker.width,
-                            height: sticker.height,
+                            width: isMobile ? sticker.width * 0.5 : sticker.width,
+                            height: isMobile ? sticker.height * 0.5 : sticker.height,
                             left: 0,
                             top: 0,
                             visibility: "hidden",
@@ -158,7 +174,7 @@ export default function Footer() {
                         }}
                     >
                         <a href={sticker.url} target="_blank" rel="noopener noreferrer">
-                            <span className="font-anton text-[32px] md:text-[40px] uppercase leading-none pb-1 pointer-events-none">
+                            <span className="font-anton text-[18px] md:text-[40px] uppercase leading-none pb-1 pointer-events-none">
                                 {sticker.text}
                             </span>
                         </a>
@@ -172,8 +188,8 @@ export default function Footer() {
                         className={`absolute rounded-full flex items-center justify-center border border-black shadow-xl cursor-grab active:cursor-grabbing will-change-transform ${circle.color === "black" ? "bg-black text-white" : "bg-white text-black"
                             }`}
                         style={{
-                            width: circle.size,
-                            height: circle.size,
+                            width: isMobile ? circle.size * 0.5 : circle.size,
+                            height: isMobile ? circle.size * 0.5 : circle.size,
                             left: 0,
                             top: 0,
                             visibility: "hidden",
@@ -204,37 +220,44 @@ export default function Footer() {
                 ))}
             </div>
 
-            <div className="relative w-full bg-black text-white rounded-t-[15vw] pt-[8vw] pb-[4vw] px-[10vw] z-20">
-                <div className="mx-auto text-center md:text-left w-full">
-                    <div className="grid grid-cols-1 md:grid-cols-3 items-start gap-[5vw] mb-[6vw]">
-                        <div className="max-w-[22vw] mx-auto md:mx-0">
-                            <p className="font-poppins text-[1.2vw] min-text-[16px] leading-[1.3] font-normal">
+            <div className="relative w-full bg-black text-white rounded-t-[30vw] md:rounded-t-[15vw] pt-[25vw] md:pt-[10vw] pb-[12vw] md:pb-[4vw] px-[8vw] md:px-[10vw] z-20">
+                <div className="mx-auto w-full">
+                    <div className="flex flex-col gap-[10vw] md:gap-0 md:grid md:grid-cols-3 md:items-start md:mb-[8vw] mb-[15vw]">
+                        {/* Invitation text - Top centered on mobile */}
+                        <div className="w-full md:max-w-[22vw] text-center md:text-left order-1">
+                            <p className="font-poppins text-[4vw] md:text-[1.2vw] leading-[1.4] md:leading-[1.3] font-normal opacity-90">
                                 We invite you to contact our team for more information
                             </p>
                         </div>
-                        <div className="flex justify-center">
-                            <a href="mailto:hello@trivox.com" className="font-poppins text-[1.2vw] min-text-[16px] leading-[1.3] font-normal">
-                                Let’s Connect
-                            </a>
-                        </div>
-                        <div className="md:text-right">
-                            <p className="font-poppins text-[1.2vw] min-text-[16px] leading-[1.3] font-normal">
-                                © {year} Trivox Studio. <br className="hidden md:block" /> All Rights Reserved.
-                            </p>
+
+                        {/* Let's Connect and Copyright - Row on mobile */}
+                        <div className="w-full flex justify-between items-baseline order-2 md:contents">
+                            <div className="flex justify-center md:block">
+                                <a href="mailto:hello@trivox.com" className="font-poppins text-[4vw] md:text-[1.2vw] leading-[1.3] font-normal hover:text-[#F80000] transition-colors whitespace-nowrap">
+                                    Let’s Connect
+                                </a>
+                            </div>
+                            <div className="text-right">
+                                <p className="font-poppins text-[3.2vw] md:text-[1.2vw] leading-[1.4] md:leading-[1.3] font-normal opacity-70">
+                                    © {year} Trivox Studio. <br className="hidden md:block" /> All Rights Reserved.
+                                </p>
+                            </div>
                         </div>
                     </div>
 
-                    <div className="w-full flex justify-center mb-[4vw] overflow-hidden">
-                        <h2 className="font-anton text-[18vw] sm:text-[19vw] md:text-[19.2vw] lg:text-[18vw] xl:text-[15.5vw] leading-[0.8] uppercase text-white tracking-[-0.01em] whitespace-nowrap select-none pt-[2vw] pb-[1vw]">
+                    {/* Main Title Center */}
+                    <div className="w-full flex justify-center mb-[10vw] md:mb-[6vw] overflow-hidden">
+                        <h2 className="font-anton text-[13.5vw] sm:text-[19vw] md:text-[19.2vw] lg:text-[18vw] xl:text-[15.5vw] leading-[0.8] uppercase text-white tracking-[-0.01em] whitespace-nowrap select-none pt-[2vw] pb-[1vw]">
                             TRIVOX STUDIO
                         </h2>
                     </div>
 
+                    {/* Back to Top */}
                     <div className="flex justify-center mt-[4vw]">
-                        <button onClick={scrollToTop} className="group cursor-pointer flex flex-col items-center gap-[1vw] font-poppins text-[1.1vw] min-text-[14px] leading-[1.3] font-normal hover:text-[#F80000] transition-colors">
-                            <span className="uppercase tracking-widest flex items-center gap-[0.5vw]">
+                        <button onClick={scrollToTop} className="group cursor-pointer flex flex-col items-center gap-[2vw] md:gap-[1vw] font-poppins text-[4vw] md:text-[1.1vw] leading-[1.3] font-normal hover:text-[#F80000] transition-colors">
+                            <span className="uppercase tracking-[0.2em] flex items-center gap-[0.5vw]">
                                 <span>[</span>
-                                <ArrowUp className="w-[1.5vw] h-[1.5vw] min-w-[20px] min-h-[20px]" strokeWidth={2} />
+                                <ArrowUp className="w-[4.5vw] h-[4.5vw] md:w-[1.5vw] md:h-[1.5vw]" strokeWidth={2} />
                                 <span>]</span>
                                 Back to Top
                             </span>

@@ -10,7 +10,7 @@ import { projects } from "@/constants/projects";
 export default function Work() {
     const displayProjects = projects.slice(0, 4);
     return (
-        <section id="work" className="bg-white text-black py-[10vh] lg:py-[15vh] px-[4vw] md:px-[8vw]">
+        <section id="work" className="bg-white text-black py-[10vh] lg:py-[15vh] px-[4vw] md:px-[8vw] border-none outline-none relative z-10 -mt-[1px] pt-[1px]">
             <div className="w-full">
                 {/* Header */}
                 <div className="flex justify-between items-baseline mb-[5vw]">
@@ -22,15 +22,17 @@ export default function Work() {
                     </span>
                 </div>
 
-                {/* Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[1vw] gap-y-[3vw]">
+                {/* Grid / Horizontal Scroll on Mobile */}
+                <div className="flex md:grid md:grid-cols-2 gap-x-[4vw] md:gap-x-[1vw] gap-y-[8vw] md:gap-y-[3vw] overflow-x-auto md:overflow-visible pb-[10vw] md:pb-0 no-scrollbar snap-x snap-mandatory">
                     {displayProjects.map((project, idx) => (
-                        <ProjectCard key={idx} project={project} idx={idx} />
+                        <div key={idx} className={`min-w-[85vw] md:min-w-0 snap-start ${idx === displayProjects.length - 1 ? "pr-[4vw] md:pr-0" : ""}`}>
+                            <ProjectCard project={project} idx={idx} />
+                        </div>
                     ))}
                 </div>
 
                 {/* Button */}
-                <div className="flex justify-center mt-[6vw] mb-[10vh]">
+                <div className="flex justify-center mt-[6vw] pb-[10vh]">
                     <motion.div
                         initial={{ opacity: 0, y: "2vw" }}
                         whileInView={{ opacity: 1, y: 0 }}
@@ -166,15 +168,15 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
                 </div>
 
                 {/* Text Info */}
-                <div className="flex flex-col gap-0">
-                    <h3 className="font-anton text-[2vw] md:text-[1.8vw] uppercase leading-none">
+                <div className="flex flex-col gap-1 mt-[2vw] md:mt-0">
+                    <h3 className="font-anton text-[6vw] md:text-[1.8vw] uppercase leading-none">
                         {project.name}
                     </h3>
                     <div className="flex justify-between items-center opacity-60">
-                        <p className="font-poppins text-[1vw] leading-[1.3]">
+                        <p className="font-poppins text-[3.5vw] md:text-[1vw] leading-[1.3]">
                             {project.category}
                         </p>
-                        <p className="font-poppins text-[1vw] leading-[1.3]">
+                        <p className="font-poppins text-[3.5vw] md:text-[1vw] leading-[1.3]">
                             {project.year}
                         </p>
                     </div>
@@ -219,9 +221,9 @@ function MagneticButton() {
         >
             <Link
                 href="/works"
-                className="flex items-center gap-[0.5vw] bg-[#010101] text-white px-[2vw] py-[1vw] rounded-[3vw] transition-all"
+                className="flex items-center gap-[2vw] md:gap-[0.5vw] bg-[#010101] text-white px-[6vw] py-[3vw] md:px-[2vw] md:py-[1vw] rounded-full md:rounded-[3vw] transition-all"
             >
-                <div className="w-[1vw] h-[1vw] relative flex items-center justify-center">
+                <div className="w-[4vw] h-[4vw] md:w-[1vw] md:h-[1vw] relative flex items-center justify-center">
                     <Image
                         src="/images/star.svg"
                         alt="star"
@@ -231,7 +233,7 @@ function MagneticButton() {
                         }}
                     />
                 </div>
-                <span className="font-poppins text-[1.2vw] leading-[1.3]">
+                <span className="font-poppins text-[4vw] md:text-[1.2vw] leading-[1.3] uppercase tracking-wider">
                     View All Work
                 </span>
             </Link>

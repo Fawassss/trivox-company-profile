@@ -64,9 +64,9 @@ export default function Services() {
     };
 
     return (
-        <section id="services" ref={containerRef} className="relative h-[500vh] bg-white text-black font-poppins selection:bg-black selection:text-white">
+        <section id="services" ref={containerRef} className="relative h-[500vh] bg-white text-black font-poppins selection:bg-black selection:text-white border-none outline-none -mt-[1px] pt-[1px] z-20">
 
-            <div className="sticky top-0 h-screen w-full flex flex-col overflow-hidden">
+            <div className="sticky top-0 h-screen w-full flex flex-col overflow-hidden bg-white">
                 <div className="px-[4vw] md:px-[8vw] py-[5vh]">
                     <div className="w-full">
 
@@ -76,7 +76,7 @@ export default function Services() {
                             initial="hidden"
                             whileInView="visible"
                             viewport={{ once: true }}
-                            className="flex flex-col lg:flex-row justify-between items-baseline gap-[2vw]"
+                            className="flex flex-row justify-between items-baseline gap-[2vw]"
                         >
                             <div className="overflow-hidden">
                                 <h2 className="font-anton text-[12vw] md:text-[10vw] lg:text-[9vw] leading-none uppercase select-none flex">
@@ -94,7 +94,7 @@ export default function Services() {
                             <div className="overflow-hidden lg:mb-[1vw]">
                                 <motion.span
                                     variants={textVariants}
-                                    className="font-poppins text-[4vw] md:text-[1.8vw] leading-none select-none inline-block border-b border-black pb-[0.3vw]"
+                                    className="font-poppins text-[4vw] md:text-[1.8vw] leading-none select-none inline-block border-none md:border-b border-black pb-[0.3vw]"
                                 >
                                     What We Do
                                 </motion.span>
@@ -126,7 +126,7 @@ export default function Services() {
                     </div>
 
                     {/* Services List - Full Width Rows */}
-                    <div className="mt-auto flex flex-col w-full border-t border-black/10 pb-[2vh]">
+                    <div className="mt-[2vh] lg:mt-auto flex flex-col w-full pb-[10vh] lg:pb-[2vh]">
 
                         {services.map((service, index) => (
                             <ServiceItem
@@ -164,7 +164,7 @@ function ServiceItem({ id, title, progress, index, total }: { id: string; title:
 
     return (
         <div
-            className="group relative w-full h-[12vw] md:h-[8vw] lg:h-[5.2vw] flex items-center justify-end px-[4vw] md:px-[8vw] lg:pl-[45vw] border-b border-black/10 last:border-b-0 cursor-pointer overflow-hidden"
+            className="group relative w-full h-[14vw] md:h-[8vw] lg:h-[5.2vw] flex items-center justify-center md:justify-end px-[4vw] md:px-[8vw] lg:pl-[45vw] border-b border-black/10 last:border-b-0 cursor-pointer overflow-hidden"
         >
 
             {/* Background Color Transition Overlay */}
@@ -175,49 +175,20 @@ function ServiceItem({ id, title, progress, index, total }: { id: string; title:
                 className="absolute inset-0 bg-[#F80000] z-0"
             />
 
-            <div className="relative z-10 flex items-center gap-[4vw] lg:gap-[6vw] select-none">
-                <div className="h-[8vw] md:h-[4vw] overflow-hidden flex flex-col items-end">
+            <div className="relative z-10 flex items-center justify-center w-full md:w-auto gap-[4vw] lg:gap-[6vw] select-none">
+                <div className="h-[10vw] md:h-[4vw] flex flex-col items-center md:items-end">
                     <div className="flex">
-                        {text.split("").map((char, i) => (
-                            <motion.span
-                                key={i}
-                                animate={active ? { y: "-100%" } : { y: 0 }}
-                                transition={{
-                                    duration: 0.5,
-                                    ease: [0.33, 1, 0.68, 1],
-                                    delay: i * 0.01
-                                }}
-                                className="font-anton text-[5vw] md:text-[3.5vw] lg:text-[2.8vw] leading-[1.2] uppercase text-black inline-block h-[8vw] md:h-[4vw] flex items-center"
-                            >
-                                {char === " " ? "\u00A0" : char}
-                            </motion.span>
-                        ))}
-                    </div>
-                    {/* Layer 2: White Text */}
-                    <div className="flex">
-                        {text.split("").map((char, i) => (
-                            <motion.span
-                                key={i}
-                                animate={active ? { y: "-100%" } : { y: 0 }}
-                                transition={{
-                                    duration: 0.5,
-                                    ease: [0.33, 1, 0.68, 1],
-                                    delay: i * 0.01
-                                }}
-                                className="font-anton text-[5vw] md:text-[3.5vw] lg:text-[2.8vw] leading-[1.2] uppercase text-white inline-block h-[8vw] md:h-[4vw] flex items-center"
-                            >
-                                {char === " " ? "\u00A0" : char}
-                            </motion.span>
-                        ))}
+                        <span className={`font-anton text-[5.2vw] md:text-[3.5vw] lg:text-[2.8vw] leading-none uppercase inline-block flex items-center whitespace-nowrap ${active ? "text-white" : "text-black"}`}>
+                            {text}
+                        </span>
                     </div>
                 </div>
-
-                {/* Arrow Icon */}
+                {/* Arrow Icon (Desktop Only) */}
                 <motion.div
                     initial={{ opacity: 0, x: "-2vw", scale: 0.5 }}
                     animate={active ? { opacity: 1, x: 0, scale: 1 } : { opacity: 0, x: "-2vw", scale: 0.5 }}
                     transition={{ duration: 0.3, ease: "easeOut" }}
-                    className="text-white"
+                    className="text-white hidden md:block"
                 >
                     <svg
                         className="w-[6vw] h-[6vw] md:w-[3vw] md:h-[3vw]"

@@ -108,8 +108,8 @@ const Hero = () => {
     };
 
     return (
-        <section id="home" className="relative w-full min-h-screen bg-white pt-[2vh] md:pt-[5vh] overflow-hidden flex flex-col items-center justify-start pb-[10vh]">
-            <div className="w-full px-[4vw] md:px-[8vw] flex flex-col gap-0 select-none">
+        <section id="home" className="relative w-full min-h-screen bg-white pt-[15vh] md:pt-[5vh] overflow-hidden flex flex-col items-center justify-start pb-[10vh]">
+            <div className="w-full px-[8vw] md:px-[8vw] flex flex-col lg:gap-0 md:gap-6 gap-6 select-none">
 
                 {/* Row 1: Image + DIGITAL */}
                 <div className="flex items-end mb-0 lg:mb-[1vw] text-black">
@@ -117,7 +117,7 @@ const Hero = () => {
                         initial={{ opacity: 0, scale: 0.8 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 1, ease: "easeOut" }}
-                        className="relative w-[32vw] h-[36vw] md:w-[14vw] md:h-[20vw] shrink-0 z-20"
+                        className="relative w-[20vw] h-[20vw] md:w-[14vw] md:h-[20vw] shrink-0 z-20"
                     >
                         <Image
                             src="/images/hero.webp"
@@ -132,7 +132,7 @@ const Hero = () => {
                             initial={{ x: "100%", opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ duration: 1, delay: 0.2, ease: ease }}
-                            className="font-anton text-[22vw] sm:text-[21vw] md:text-[20vw] lg:text-[20vw] xl:text-[17vw] leading-[0.90] text-black uppercase tracking-[0.01em] whitespace-nowrap"
+                            className="font-anton text-[21vw] sm:text-[21vw] md:text-[20vw] lg:text-[20vw] xl:text-[17vw] leading-[0.90] text-black uppercase tracking-[0.01em] whitespace-nowrap"
                         >
                             <MagneticWrapper>
                                 <StaggeredRollingText text="DIGITAL" className="cursor-pointer transition-colors duration-300" />
@@ -168,9 +168,9 @@ const Hero = () => {
                                     delay: 1.1
                                 }
                             }}
-                            className="absolute top-0 right-[-15%] md:right-[-25%] lg:right-[-18%] -translate-y-[65%] pointer-events-none"
+                            className="absolute top-0 right-[-10%] md:right-[-25%] lg:right-[-22%] -translate-y-[70%] lg:-translate-y-[60%] pointer-events-none"
                         >
-                            <div className="relative w-[25vw] h-[25vw] md:w-[15vw] md:h-[15vw] lg:w-[24vw] lg:h-[22vw]">
+                            <div className="relative w-[20vw] h-[20vw] md:w-[15vw] md:h-[15vw] lg:w-[24vw] lg:h-[22vw]">
                                 <Image
                                     src="/images/star.svg"
                                     alt="Star"
@@ -183,8 +183,8 @@ const Hero = () => {
                 </div>
 
                 {/* Row 3: STUDIO + Description */}
-                <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between mt-0 md:mt-[1.5vw] gap-[2vw] lg:gap-[2vw]">
-                    <div className="order-2 lg:order-1">
+                <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between mt-0 md:mt-[1.5vw] gap-[8vw] lg:gap-[2vw]">
+                    <div className="order-1 lg:order-1">
                         <motion.h1
                             initial={{ x: "100%", opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
@@ -203,14 +203,14 @@ const Hero = () => {
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
-                        className="order-1 lg:order-2 max-w-[80vw] lg:max-w-[35vw] lg:mb-[3.5vw] xl:mb-[4.5vw]"
+                        className="order-2 lg:order-2 max-w-[72vw] lg:max-w-[35vw] lg:mb-[3.5vw] xl:mb-[4.5vw]"
                     >
                         <div className="flex flex-wrap items-start justify-start gap-x-[0.35em] gap-y-0 text-left">
                             {words.map((word, idx) => (
                                 <div key={idx} className="overflow-hidden">
                                     <motion.span
                                         variants={wordVariants}
-                                        className="inline-block font-poppins font-normal text-[3.5vw] md:text-[1.6vw] lg:text-[1.2vw] leading-[1.4] text-black"
+                                        className="inline-block font-poppins font-normal text-[4.8vw] md:text-[1.6vw] lg:text-[1.2vw] leading-[1.4] text-black"
                                     >
                                         {word}
                                     </motion.span>
