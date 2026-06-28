@@ -44,7 +44,7 @@ export default function ProjectDetail() {
                             className="object-cover"
                             priority
                         />
-                        <div className="absolute inset-0 bg-black/40" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent" />
 
                         <div className="w-full px-[4vw] md:px-[8vw] pb-[8vh] relative z-10">
                             <motion.div
@@ -129,7 +129,7 @@ export default function ProjectDetail() {
                                         transition={{ duration: 0.8 }}
                                     >
                                         <h2 className="font-anton text-[10vw] md:text-[6vw] lg:text-[5vw] uppercase mb-[1.5vw] leading-tight">OVERVIEW</h2>
-                                        <div className="font-poppins text-[4vw] md:text-[1.8vw] lg:text-[1.2vw] leading-[1.6] opacity-80 whitespace-pre-line max-w-[50vw]">
+                                        <div className="font-poppins text-[4vw] md:text-[1.8vw] lg:text-[1.2vw] leading-[1.6] opacity-80 whitespace-pre-line md:max-w-[50vw] max-w-[100vw]">
                                             {project.overview}
                                         </div>
                                     </motion.div>

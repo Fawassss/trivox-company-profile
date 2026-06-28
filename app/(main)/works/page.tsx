@@ -18,15 +18,15 @@ export default function WorksPage() {
             <div className="min-h-screen bg-white">
                 <Navbar />
 
-                <main className="pt-[15vh] pb-[10vh] px-[4vw] md:px-[8vw]">
+                <main className="md:pt-[15vh] pt-[6vh] px-[4vw] md:px-[8vw]">
                     {/* Header */}
-                    <div className="flex justify-between items-end mb-[8vw] border-b border-black/10 pb-[2vw]">
+                    <div className="flex justify-between items-end md:mb-[3vw] mb-[5vw] border-b border-black/10">
                         <div className="flex flex-col">
                             <motion.span
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 transition={{ duration: 0.6 }}
-                                className="font-poppins text-[1.2vw] uppercase tracking-widest text-black mb-[0.5vw]"
+                                className="font-poppins md:text-[1.2vw] text-[3vw] uppercase tracking-widest text-black mb-[0.5vw]"
                             >
                                 Selected works
                             </motion.span>
@@ -52,14 +52,14 @@ export default function WorksPage() {
                     </div>
 
                     {/* Filter / Categories (Placeholder for a premium feel) */}
-                    <div className="flex gap-[1vw] mb-[5vw] overflow-x-auto pb-[1vw] scrollbar-hide">
+                    <div className="flex gap-[1vw] md:mb-[3vw] mb-[5vw] overflow-x-auto pb-[1vw] scrollbar-hide">
                         {["All", "Branding", "Website", "E-Commerce", "UI/UX", "Mobile App"].map((cat, i) => (
                             <motion.button
                                 key={cat}
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.4, delay: 0.4 + (i * 0.05) }}
-                                className={`px-[1.5vw] py-[0.6vw] rounded-full border border-black font-poppins text-[0.9vw] uppercase tracking-wider hover:bg-black hover:text-white transition-colors ${cat === "All" ? "bg-black text-white" : "text-black"}`}
+                                className={`px-[1.5vw] py-[0.6vw] rounded-full border border-black font-poppins md:text-[0.9vw] text-[2vw] uppercase tracking-wider hover:bg-black hover:text-white transition-colors ${cat === "All" ? "bg-black text-white" : "text-black"}`}
                             >
                                 {cat}
                             </motion.button>
@@ -150,16 +150,16 @@ function ProjectCard({ project, idx }: { project: any; idx: number }) {
                 </div>
 
                 {/* Text Info */}
-                <div className="flex justify-between items-start">
+                <div className="flex justify-between md:mt-0 mt-[2.5vh] items-start">
                     <div className="flex flex-col">
-                        <h3 className="font-anton text-[3vw] md:text-[2.5vw] lg:text-[2vw] uppercase leading-none mb-[0.5vw] transition-colors group-hover:text-black/70 text-black">
+                        <h3 className="font-anton text-[5vw] md:text-[2.5vw] lg:text-[2vw] uppercase leading-none mb-[0.5vw] transition-colors group-hover:text-black/70 text-black">
                             {project.name}
                         </h3>
-                        <p className="font-poppins text-[1vw] uppercase tracking-wider text-black">
+                        <p className="font-poppins md:text-[1vw] text-[3vw] uppercase tracking-wider text-black">
                             {project.category}
                         </p>
                     </div>
-                    <span className="font-anton text-[1.5vw] text-black">
+                    <span className="font-anton md:text-[1.5vw] text-[3vw] text-black">
                         {project.year}
                     </span>
                 </div>

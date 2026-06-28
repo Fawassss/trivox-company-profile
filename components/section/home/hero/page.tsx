@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { motion, Variants, useSpring, useMotionValue } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
+import Marquee from "../marquee/page";
 
 const MagneticWrapper = ({ children }: { children: React.ReactNode }) => {
     const ref = useRef<HTMLDivElement>(null);
@@ -108,8 +109,8 @@ const Hero = () => {
     };
 
     return (
-        <section id="home" className="relative w-full min-h-screen bg-white pt-[15vh] md:pt-[5vh] overflow-hidden flex flex-col items-center justify-start pb-[10vh]">
-            <div className="w-full px-[8vw] md:px-[8vw] flex flex-col lg:gap-0 md:gap-6 gap-6 select-none">
+        <section id="home" className="relative w-full min-h-screen bg-white pt-[0vh] md:pt-[5vh] overflow-hidden flex flex-col items-center justify-between pb-0">
+            <div className="w-full px-[8vw] md:px-[8vw] flex flex-col lg:gap-0 md:gap-6 gap-6 select-none my-auto">
 
                 {/* Row 1: Image + DIGITAL */}
                 <div className="flex items-end mb-0 lg:mb-[1vw] text-black">
@@ -221,6 +222,7 @@ const Hero = () => {
                 </div>
 
             </div>
+            <Marquee />
         </section>
     );
 };
