@@ -11,7 +11,7 @@ const services = [
     { id: "04", title: "MOBILE APPS DEVELOPMENT", image: "/images/service4.JPG" },
     { id: "05", title: "UI/UX DESIGN", image: "/images/service5.JPG" },
     { id: "06", title: "DIGITAL EXPERIENCE & INTERACTION", image: "/images/service6.JPG" },
-    { id: "07", title: "GAME DEVELOPMENT", image: "/images/service6.JPG" },
+    { id: "07", title: "GAME DEVELOPMENT", image: "/images/service7.png" },
 ];
 
 export default function Services() {
@@ -66,7 +66,7 @@ export default function Services() {
     return (
         <section id="services" ref={containerRef} className="relative h-[500vh] bg-white text-black font-poppins selection:bg-black selection:text-white">
 
-            <div className="sticky top-0 h-screen w-full flex flex-col overflow-hidden">
+            <div className="sticky top-0 h-screen h-[100dvh] w-full flex flex-col overflow-hidden">
                 <div className="px-[4vw] md:px-[8vw] py-[3vh]">
                     <div className="w-full">
 
@@ -126,8 +126,8 @@ export default function Services() {
                     </div>
 
                     {/* Active Image (Mobile) */}
-                    <div className="lg:hidden w-full px-[4vw] md:px-[8vw] mb-[3vh] flex flex-col justify-center items-center flex-grow">
-                        <div className="relative w-full aspect-square overflow-hidden bg-gray-100 rounded-md">
+                    <div className="lg:hidden w-full px-[4vw] md:px-[8vw] mb-[3vh] flex flex-col justify-center items-center">
+                        <div className="relative aspect-square h-[42dvh] overflow-hidden bg-gray-100 rounded-md">
                             <AnimatePresence mode="wait">
                                 <motion.div
                                     key={activeIndex}
@@ -150,7 +150,7 @@ export default function Services() {
                     </div>
 
                     {/* Services List - Full Width Rows */}
-                    <div className="mt-auto flex flex-col w-full border-t border-black/10 pb-[2vh]">
+                    <div className="mt-4 lg:mt-auto flex flex-col w-full border-t border-black/10 pb-[2vh]">
 
                         {services.map((service, index) => (
                             <ServiceItem

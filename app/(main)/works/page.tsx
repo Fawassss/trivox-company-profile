@@ -12,6 +12,14 @@ import { useLenis } from "lenis/react";
 import { projects } from "@/constants/projects";
 
 export default function WorksPage() {
+    const [selectedCategory, setSelectedCategory] = useState("All");
+
+    const filteredProjects = selectedCategory === "All"
+        ? projects
+        : projects.filter(project =>
+            project.category.toLowerCase().includes(selectedCategory.toLowerCase())
+        );
+
     return (
         <SmoothScroll>
             <ScrollToTop />
@@ -46,20 +54,21 @@ export default function WorksPage() {
                             className="hidden md:block"
                         >
                             <span className="font-anton text-[4vw] leading-none uppercase text-black">
-                                {projects.length} ITEMS
+                                {filteredProjects.length} ITEMS
                             </span>
                         </motion.div>
                     </div>
 
-                    {/* Filter / Categories (Placeholder for a premium feel) */}
-                    <div className="flex gap-[1vw] md:mb-[3vw] mb-[5vw] overflow-x-auto pb-[1vw] scrollbar-hide">
+                    {/* Filter / Categories */}
+                    <div className="flex gap-2 md:gap-[1vw] md:mb-[3vw] mb-[5vw] overflow-x-auto pb-2 md:pb-[1vw] scrollbar-hide">
                         {["All", "Branding", "Website", "E-Commerce", "UI/UX", "Mobile App"].map((cat, i) => (
                             <motion.button
                                 key={cat}
                                 initial={{ opacity: 0, scale: 0.9 }}
                                 animate={{ opacity: 1, scale: 1 }}
                                 transition={{ duration: 0.4, delay: 0.4 + (i * 0.05) }}
-                                className={`px-[1.5vw] py-[0.6vw] rounded-full border border-black font-poppins md:text-[0.9vw] text-[2vw] uppercase tracking-wider hover:bg-black hover:text-white transition-colors ${cat === "All" ? "bg-black text-white" : "text-black"}`}
+                                onClick={() => setSelectedCategory(cat)}
+                                className={`px-[1.5vw] py-[0.6vw] rounded-full border border-black font-poppins md:text-[0.9vw] text-[2vw] uppercase tracking-wider hover:bg-black hover:text-white transition-colors ${selectedCategory === cat ? "bg-black text-white" : "text-black bg-white hover:bg-black hover:text-white"}`}
                             >
                                 {cat}
                             </motion.button>
@@ -68,7 +77,7 @@ export default function WorksPage() {
 
                     {/* Grid */}
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[2vw] gap-y-[5vw]">
-                        {projects.map((project, idx) => (
+                        {filteredProjects.map((project, idx) => (
                             <ProjectCard key={project.id} project={project} idx={idx} />
                         ))}
                     </div>

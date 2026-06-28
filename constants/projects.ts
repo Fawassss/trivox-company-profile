@@ -106,7 +106,7 @@ export const projects: Project[] = [
         id: 6,
         slug: "project-6",
         name: "PROJECT SIX",
-        category: "Social Media, Content",
+        category: "Social Media, Mobile App ",
         year: "2025",
         image: "/images/project2.png",
         heroImage: "/images/project2.png",
