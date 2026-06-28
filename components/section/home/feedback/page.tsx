@@ -144,7 +144,7 @@ export default function ClientFeedback() {
         <section id="testimonials" className="relative w-full h-[400vh] bg-white">
             {/* Background Text - Sticky */}
             <div className="sticky top-0 h-screen w-full flex items-center justify-center overflow-hidden z-0 px-[4vw]">
-                <div className="flex flex-col items-center select-none pointer-events-none gap-[1vw] md:gap-[3vw]">
+                <div className="flex flex-col items-center select-none pointer-events-none gap-[2vw] md:gap-[3vw]">
                     <h2 className="font-anton text-[12vw] md:text-[12vw] lg:text-[12vw] leading-[0.8] text-[#010101] text-center uppercase">
                         CLIENT
                     </h2>

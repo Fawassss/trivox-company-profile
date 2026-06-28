@@ -79,7 +79,7 @@ export default function AboutUs() {
 
     return (
         <section id="about-us" ref={containerRef} className="relative h-fit md:h-[300vh] bg-white text-black font-poppins selection:bg-black selection:text-white">
-            <div className="md:sticky md:top-0 h-auto md:h-screen w-full flex flex-col overflow-hidden py-[15vw] md:py-0">
+            <div className="md:sticky md:top-0 h-auto md:h-screen w-full flex flex-col overflow-hidden py-[40vw] md:py-0">
 
                 {/* Content Section */}
                 <div className="flex-grow flex flex-col justify-center px-[4vw] md:px-[8vw]">
@@ -90,14 +90,14 @@ export default function AboutUs() {
                             alt="star"
                             width={20}
                             height={20}
-                            className="w-[1.5vw] h-[1.5vw]"
+                            className="w-[1.5vw] h-[1.5vw] md:block hidden"
                         />
-                        <span className="text-[2vw] md:text-[1.5vw] font-normal uppercase tracking-wider">About us</span>
+                        <span className="text-[4vw] md:text-[1.5vw] font-normal uppercase tracking-wider">About us</span>
                     </div>
 
                     {/* Main Text with Scroll Animation */}
                     <div className="w-full max-w-[100%]">
-                        <h2 className="text-[5vw] md:text-[4vw] lg:text-[3.2vw] font-normal leading-[1.2]">
+                        <h2 className="text-[4vw] md:text-[4vw] lg:text-[3.2vw] font-normal leading-[1.2]">
                             <AnimatedText
                                 progress={scrollYProgress}
                                 isMobile={isMobile}

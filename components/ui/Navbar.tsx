@@ -79,7 +79,7 @@ const Navbar = () => {
                 transition={{ duration: 0.5, ease: [0.76, 0, 0.24, 1] as any }}
                 className={`fixed top-0 left-0 right-0 z-40 flex justify-center bg-transparent mix-blend-difference ${isScrolled ? "pointer-events-none" : "pointer-events-auto"}`}
             >
-                <div className="w-full max-w-[90vw] h-fit md:h-[13.5vw] flex items-start justify-between px-[2vw] md:px-[4vw] pt-[1.6vw] pb-[2.7vw] md:pb-[1.6vw] relative">
+                <div className="w-full max-w-[90vw] h-fit md:h-[13.5vw] flex items-start justify-between px-[2vw] md:px-[4vw] pt-[1.6vw] pb-[2.7vw] md:pb-[1.6vw] relative md:block hidden">
                     <div className="flex-1">
                         <Link href="/" className="inline-block">
                             <h1 className="font-poppins font-bold text-[1.4vw] md:text-[1.6vw] leading-[1.1] text-white uppercase">

@@ -10,7 +10,7 @@ import { projects } from "@/constants/projects";
 export default function Work() {
     const displayProjects = projects.slice(0, 4);
     return (
-        <section id="work" className="bg-white text-black py-[10vh] lg:py-[15vh] px-[4vw] md:px-[8vw] border-none outline-none relative z-10 -mt-[1px] pt-[1px]">
+        <section id="work" className="bg-white text-black py-[20vh] lg:py-[15vh] px-[4vw] md:px-[8vw] border-none outline-none relative z-10 -mt-[1px] pt-[1px]">
             <div className="w-full">
                 {/* Header */}
                 <div className="flex justify-between items-baseline mb-[5vw]">
@@ -32,7 +32,7 @@ export default function Work() {
                 </div>
 
                 {/* Button */}
-                <div className="flex justify-center mt-[6vw] pb-[10vh]">
+                <div className="flex justify-center mt-[6vw] md:pb-[10vh] pb-0">
                     <motion.div
                         initial={{ opacity: 0, y: "2vw" }}
                         whileInView={{ opacity: 1, y: 0 }}

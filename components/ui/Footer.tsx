@@ -220,7 +220,7 @@ export default function Footer() {
                 ))}
             </div>
 
-            <div className="relative w-full bg-black text-white rounded-t-[30vw] md:rounded-t-[15vw] pt-[25vw] md:pt-[10vw] pb-[12vw] md:pb-[4vw] px-[8vw] md:px-[10vw] z-20">
+            <div className="relative w-full bg-black text-white rounded-t-[20vw] md:rounded-t-[15vw] pt-[20vw] md:pt-[10vw] pb-[12vw] md:pb-[4vw] px-[8vw] md:px-[10vw] z-20">
                 <div className="mx-auto w-full">
                     <div className="flex flex-col gap-[10vw] md:gap-0 md:grid md:grid-cols-3 md:items-start md:mb-[8vw] mb-[15vw]">
                         {/* Invitation text - Top centered on mobile */}
