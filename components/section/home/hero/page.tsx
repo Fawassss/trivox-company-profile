@@ -108,7 +108,7 @@ const Hero = () => {
     };
 
     return (
-        <section id="home" className="relative w-full min-h-screen bg-white pt-[10vh] md:pt-[15vh] overflow-hidden flex flex-col items-center justify-start pb-[10vh]">
+        <section id="home" className="relative w-full min-h-screen bg-white pt-[2vh] md:pt-[5vh] overflow-hidden flex flex-col items-center justify-start pb-[10vh]">
             <div className="w-full px-[4vw] md:px-[8vw] flex flex-col gap-0 select-none">
 
                 {/* Row 1: Image + DIGITAL */}
@@ -132,7 +132,7 @@ const Hero = () => {
                             initial={{ x: "100%", opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ duration: 1, delay: 0.2, ease: ease }}
-                            className="font-anton text-[24vw] sm:text-[23vw] md:text-[22vw] lg:text-[22vw] xl:text-[19vw] leading-[0.85] text-black uppercase tracking-[0.01em] whitespace-nowrap"
+                            className="font-anton text-[22vw] sm:text-[21vw] md:text-[20vw] lg:text-[20vw] xl:text-[17vw] leading-[0.90] text-black uppercase tracking-[0.01em] whitespace-nowrap"
                         >
                             <MagneticWrapper>
                                 <StaggeredRollingText text="DIGITAL" className="cursor-pointer transition-colors duration-300" />
@@ -148,7 +148,7 @@ const Hero = () => {
                             initial={{ x: "-100%", opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ duration: 1, delay: 0.4, ease: ease }}
-                            className="font-anton text-[24vw] sm:text-[23vw] md:text-[22vw] lg:text-[22vw] xl:text-[19vw] leading-[0.85] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
+                            className="font-anton text-[22vw] sm:text-[21vw] md:text-[20vw] lg:text-[20vw] xl:text-[17vw] leading-[0.90] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
                         >
                             <MagneticWrapper>
                                 <StaggeredRollingText text="ELEVATION" className="cursor-pointer transition-colors duration-300" />
@@ -183,13 +183,13 @@ const Hero = () => {
                 </div>
 
                 {/* Row 3: STUDIO + Description */}
-                <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between mt-0 md:mt-[2vw] gap-[2vw] lg:gap-[2vw]">
+                <div className="flex flex-col lg:flex-row items-start lg:items-end justify-between mt-0 md:mt-[1.5vw] gap-[2vw] lg:gap-[2vw]">
                     <div className="order-2 lg:order-1">
                         <motion.h1
                             initial={{ x: "100%", opacity: 0 }}
                             animate={{ x: 0, opacity: 1 }}
                             transition={{ duration: 1, delay: 0.6, ease: ease }}
-                            className="font-anton text-[24vw] sm:text-[23vw] md:text-[22vw] lg:text-[22vw] xl:text-[19vw] leading-[0.85] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
+                            className="font-anton text-[22vw] sm:text-[21vw] md:text-[20vw] lg:text-[20vw] xl:text-[17vw] leading-[0.90] text-black uppercase tracking-[-0.01em] whitespace-nowrap"
                         >
                             <MagneticWrapper>
                                 <StaggeredRollingText text="STUDIO" className="cursor-pointer transition-colors duration-300" />
@@ -203,14 +203,14 @@ const Hero = () => {
                         variants={containerVariants}
                         initial="hidden"
                         animate="visible"
-                        className="order-1 lg:order-2 max-w-[80vw] lg:max-w-[35vw] lg:mb-[3.5vw] xl:mb-[3.5vw]"
+                        className="order-1 lg:order-2 max-w-[80vw] lg:max-w-[35vw] lg:mb-[3.5vw] xl:mb-[4.5vw]"
                     >
                         <div className="flex flex-wrap items-start justify-start gap-x-[0.35em] gap-y-0 text-left">
                             {words.map((word, idx) => (
                                 <div key={idx} className="overflow-hidden">
                                     <motion.span
                                         variants={wordVariants}
-                                        className="inline-block font-poppins font-normal text-[4vw] md:text-[1.8vw] lg:text-[1.4vw] leading-[1.4] text-black"
+                                        className="inline-block font-poppins font-normal text-[3.5vw] md:text-[1.6vw] lg:text-[1.2vw] leading-[1.4] text-black"
                                     >
                                         {word}
                                     </motion.span>

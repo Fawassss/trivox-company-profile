@@ -5,42 +5,10 @@ import Link from "next/link";
 import { motion, useInView, useMotionValue, useSpring } from "framer-motion";
 import { useRef, useState } from "react";
 
-const projects = [
-    {
-        id: 1,
-        slug: "ozil-noblas",
-        name: "OZIL NOBLAS",
-        category: "Branding, Website, E-Commerce",
-        year: "2026",
-        image: "/images/project1.png",
-    },
-    {
-        id: 2,
-        slug: "ozil-noblas-2",
-        name: "OZIL NOBLAS",
-        category: "Branding, Website, E-Commerce",
-        year: "2026",
-        image: "/images/project2.png",
-    },
-    {
-        id: 3,
-        slug: "ozil-noblas-3",
-        name: "OZIL NOBLAS",
-        category: "Branding, Website, E-Commerce",
-        year: "2026",
-        image: "/images/project3.png",
-    },
-    {
-        id: 4,
-        slug: "ozil-noblas-4",
-        name: "OZIL NOBLAS",
-        category: "Branding, Website, E-Commerce",
-        year: "2026",
-        image: "/images/project3.png",
-    },
-];
+import { projects } from "@/constants/projects";
 
 export default function Work() {
+    const displayProjects = projects.slice(0, 4);
     return (
         <section id="work" className="bg-white text-black py-[10vh] lg:py-[15vh] px-[4vw] md:px-[8vw]">
             <div className="w-full">
@@ -56,13 +24,13 @@ export default function Work() {
 
                 {/* Grid */}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-x-[1vw] gap-y-[3vw]">
-                    {projects.map((project, idx) => (
+                    {displayProjects.map((project, idx) => (
                         <ProjectCard key={idx} project={project} idx={idx} />
                     ))}
                 </div>
 
                 {/* Button */}
-                <div className="flex justify-center mt-[6vw]">
+                <div className="flex justify-center mt-[6vw] mb-[10vh]">
                     <motion.div
                         initial={{ opacity: 0, y: "2vw" }}
                         whileInView={{ opacity: 1, y: 0 }}
